@@ -2,7 +2,7 @@ import {createSlice, createSelector, createEntityAdapter, nanoid, createAsyncThu
 import {sub } from 'date-fns'
 import axios from 'axios'
  
-const POSTS_URL = 'http://localhost:8080/posts'
+const POSTS_URL = 'http://localhost:8081/posts'
 
 const postsAdapter = createEntityAdapter({
     sortComparer: (a, b) => b.date.localeCompare(a.date)

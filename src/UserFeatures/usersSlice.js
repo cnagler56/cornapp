@@ -2,9 +2,9 @@ import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios'
 
 
-const USERS_URL = 'http://localhost:8080/getUsers';
-const YIELD_URL = 'http://localhost:8080/cornGuess';
-const URL = 'http://localhost:8080'
+const USERS_URL = 'http://localhost:8081/user';
+const YIELD_URL = 'http://localhost:8081/cornGuess';
+const URL = 'http://localhost:8081'
 
 const initialState =  {
     token: null
@@ -29,6 +29,7 @@ const REMOVE_TOKEN = "REMOVE_TOKEN";
 
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
     const response = await axios.get(USERS_URL);
+    console.log(response)
     return response.data
 })
 
