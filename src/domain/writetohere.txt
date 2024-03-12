@@ -1,0 +1,106 @@
+Corn for Grain Area Harvested, Yield, and Production - States and United States: 2022 and Forecasted 
+November 1, 2023.............................................................................................  5
+
+Corn Production - United States Chart........................................................................  6
+
+Sorghum for Grain Area Harvested, Yield, and Production - States and United States: 2022 and Forecasted 
+November 1, 2023.............................................................................................  6
+
+Rice Area Harvested, Yield, and Production - States and United States: 2022 and Forecasted November 1, 2023..  7
+
+Rice Production by Class - United States: 2022 and Forecasted November 1, 2023...............................  7
+
+Soybean Production - United States Chart.....................................................................  7
+
+Soybeans for Beans Area Harvested, Yield, and Production - States and United States: 2022 and Forecasted 
+November 1, 2023.............................................................................................  8
+
+Peanut Area Harvested, Yield, and Production - States and United States: 2022 and Forecasted 
+November 1, 2023.............................................................................................  9
+
+Cottonseed Production - United States: 2022 and Forecasted November 1, 2023..................................  9
+
+Cotton Production - United States Chart......................................................................  9
+
+Cotton Area Harvested, Yield, and Production by Type - States and United States: 2022 and Forecasted 
+November 1, 2023............................................................................................. 10
+
+Sugarbeet Area Harvested, Yield, and Production - States and United States: 2022 and Forecasted 
+November 1, 2023............................................................................................. 11
+
+Sugarcane for Sugar and Seed Area Harvested, Yield, and Production - States and United States: 2022 and 
+Forecasted November 1, 2023.................................................................................. 11
+
+Potato Area Planted and Harvested - States and United States: 2022 and 2023.................................. 12
+
+Potato Area Harvested, Yield, and Production - States and United States: 2022 and Forecasted 
+November 1, 2023............................................................................................. 12
+
+Crop Area Planted and Harvested, Yield, and Production in Domestic Units - United States: 2022 and 2023...... 13
+
+Crop Area Planted and Harvested, Yield, and Production in Metric Units - United States: 2022 and 2023........ 15
+
+Fruits and Nuts Production in Domestic Units - United States: 2023 and 2024.................................. 17
+
+Fruits and Nuts Production in Metric Units - United States: 2023 and 2024.................................... 18
+
+Corn for Grain Plant Population per Acre - Selected States: 2019-2023........................................ 19
+
+Corn for Grain Number of Ears per Acre - Selected States: 2019-2023.......................................... 20
+
+Corn Objective Yield Percent of Samples Processed in the Lab - United States: 2019-2023...................... 20
+
+Corn for Grain Percentage Distribution by Plant Population Per Acre - Selected States: 2019-2023............. 21
+Corn for Grain Area Harvested, Yield, and Production - States and United States: 2022 and
+Forecasted November 1, 2023
+----------------------------------------------------------------------------------------------
+                 :  Area harvested   :          Yield per acre          :     Production      
+                 :----------------------------------------------------------------------------
+      State      :         :         :          :         2023          :          :          
+                 :  2022   :  2023   :   2022   :-----------------------:   2022   :   2023   
+                 :         :         :          : October 1 :November 1 :          :          
+----------------------------------------------------------------------------------------------
+                 :    1,000 acres       ---------- bushels ----------    --- 1,000 bushels ---
+                 :                                                                            
+Alabama .........:    290       335     118.0       167.0       168.0        34,220     56,280
+Arkansas ........:    695       830     173.0       180.0       180.0       120,235    149,400
+California ......:     20        40     177.0       174.0       174.0         3,540      6,960
+Colorado ........:    980     1,070     121.0       128.0       124.0       118,580    132,680
+Delaware ........:    166       172     170.0       186.0       186.0        28,220     31,992
+Georgia .........:    385       450     175.0       177.0       183.0        67,375     82,350
+Idaho ...........:    110       120     216.0       212.0       215.0        23,760     25,800
+Illinois ........: 10,600    11,000     214.0       200.0       203.0     2,268,400  2,233,000
+Indiana .........:  5,130     5,380     190.0       197.0       200.0       974,700  1,076,000
+Iowa ............: 12,350    12,600     200.0       199.0       200.0     2,470,000  2,520,000
+                 :                                                                            
+Kansas ..........:  4,440     5,330     115.0       122.0       121.0       510,600    644,930
+Kentucky ........:  1,350     1,500     156.0       183.0       183.0       210,600    274,500
+Louisiana .......:    435       680     170.0       175.0       175.0        73,950    119,000
+Maryland ........:    380       420     165.0       158.0       171.0        62,700     71,820
+Michigan ........:  1,990     2,050     168.0       170.0       171.0       334,320    350,550
+Minnesota .......:  7,490     8,200     195.0       179.0       181.0     1,460,550  1,484,200
+Mississippi .....:    565       770     165.0       182.0       182.0        93,225    140,140
+Missouri ........:  3,110     3,670     161.0       141.0       147.0       500,710    539,490
+Nebraska ........:  8,820     9,590     165.0       174.0       173.0     1,455,300  1,659,070
+New York ........:    575       605     140.0       163.0       168.0        80,500    101,640
+                 :                                                                            
+North Carolina ..:    785       900     126.0       147.0       143.0        98,910    128,700
+North Dakota ....:  2,650     3,740     131.0       136.0       143.0       347,150    534,820
+Ohio ............:  3,180     3,370     187.0       195.0       195.0       594,660    657,150
+Oklahoma ........:    200       350     122.0       144.0       144.0        24,400     50,400
+Pennsylvania ....:    830       840     140.0       154.0       154.0       116,200    129,360
+South Carolina ..:    300       355     122.0       147.0       150.0        36,600     53,250
+South Dakota ....:  5,010     5,590     132.0       147.0       152.0       661,320    849,680
+Tennessee .......:    795       895     130.0       173.0       177.0       103,350    158,415
+Texas ...........:  1,610     2,200      95.0       130.0       130.0       152,950    286,000
+Virginia ........:    340       375     167.0       152.0       154.0        56,780     57,750
+Washington ......:     80        90     220.0       230.0       235.0        17,600     21,150
+Wisconsin .......:  3,030     3,100     180.0       165.0       171.0       545,400    530,100
+                 :                                                                            
+Other States 1/ .:    424       479     160.1       162.2       162.2        67,871     77,708
+                 :                                                                            
+United States ...: 79,115    87,096     173.4       173.0       174.9    13,714,676 15,234,285
+----------------------------------------------------------------------------------------------
+1/ Other States include Arizona, Florida, Montana, New Jersey, New Mexico, Oregon, Utah, West 
+   Virginia, and Wyoming. Individual State level estimates will be published in the "Crop     
+   Production 2023 Summary."                                                                  
