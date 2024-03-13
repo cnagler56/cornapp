@@ -13,13 +13,11 @@ const PostList = () => {
 console.log(orderedPostIds)
 let content;
 
-if(postsStatus === 'loading') {
-  content = <p>"Loading..."</p>
-} else if(postsStatus === 'succeeded') {
+// 
   content = orderedPostIds.map(postId => <PostsExcerpts key={postId} postId={postId} />)
-} else if (postsStatus === 'failed') {
-  content = <p>{error}</p>
-}
+// } else if (postsStatus === 'failed') {
+//   content = <p>{error}</p>
+// }
   return (
   <>
         <section className="contain">

@@ -1,7 +1,7 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios'
 
-const USERS_URL = 'http://localhost:8080/yields';
+const USERS_URL = 'http://localhost:8081/cornyields';
 
 const initialState = []
 

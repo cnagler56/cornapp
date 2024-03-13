@@ -11,7 +11,7 @@ const initialState = {
 export const USERS = "USERS"
 export const FAILED = "FAILED"
 
-let url = "http://localhost:8080"
+let url = "http://localhost:8081"
 
 
 
@@ -29,7 +29,7 @@ export default (state = initialState, action) => {
 
 }
 export const fetchUsers = createAsyncThunk('users', async () => {
-    const response = await fetch('http://localhost:8080/getUsers');
+    const response = await fetch('http://localhost:8081/getUsers');
     let data = await response.json();
     console.log(data)
     return data
@@ -39,7 +39,7 @@ export const fetchUsers = createAsyncThunk('users', async () => {
   export const addUser = createAsyncThunk('users', async(payload)=> {
     console.log(firstName,lastName,email,password,city,state,interest)
     const {firstName,lastName,email,password,city,state,interest} = payload
-    const response = await fetch('http://localhost:8080/users',
+    const response = await fetch('http://localhost:8081/register',
     {
                     method: "POST",
                     body: JSON.stringify({
