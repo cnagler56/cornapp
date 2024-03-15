@@ -1,29 +1,29 @@
 import {useSelector, useDispatch} from 'react-redux'
-import {selectPostIds, getPostsError, getPostsStatus} from './postsSlice'
-// import AddPostForm from './AddPostForm'
-// import PostAuthor from './PostAuthor'
-// import ReactionButtons from './ReactionButtons'
-// import {useEffect} from 'react'
+import {selectPostIds, selectAllPosts, getPostsError, getPostsStatus} from './postsSlice'
 import PostsExcerpts from './PostsExcerpts'
+import PostAuthor from "./PostAuthor";
+import TimeAgo from "./TimeAgo";
+import ReactionButtons from "./ReactionButtons";
 
 const PostList = () => {
-  const orderedPostIds = useSelector(selectPostIds)
-  const error = useSelector(getPostsError)
-  const postsStatus = useSelector(getPostsStatus)
-console.log(orderedPostIds)
-let content;
 
-// 
-  content = orderedPostIds.map(postId => <PostsExcerpts key={postId} postId={postId} />)
-// } else if (postsStatus === 'failed') {
-//   content = <p>{error}</p>
-// }
+  const orderedPostIds = useSelector(selectPostIds)
+  const postStatus = useSelector(getPostsStatus);
+  const error = useSelector(getPostsError);
+
+  let content;
+  if (postStatus === 'loading') {
+      content = <p>"Loading..."</p>;
+  } else if (postStatus === 'succeeded') {
+      content = orderedPostIds.map(postId => <PostsExcerpts key={postId} postId={postId} />)
+  } else if (postStatus === 'failed') {
+      content = <p>{error}</p>;
+  }
+
   return (
-  <>
-        <section className="contain">
-            {content}
-        </section>
-    </>
+      <section>
+          {content}
+      </section>
   )
 }
 export default PostList

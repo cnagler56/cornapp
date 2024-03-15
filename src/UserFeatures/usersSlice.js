@@ -7,7 +7,7 @@ const YIELD_URL = 'http://localhost:8081/cornGuess';
 const URL = 'http://localhost:8081'
 
 const initialState =  {
-    token: null
+    // token: null
 }
 
 

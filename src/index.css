@@ -166,7 +166,20 @@ main {
   display: flex;
   flex-direction: column;
 }
+.postTitle {
+  min-width: 400px;
+  border: 2px solid blue;
+  font-weight: bold;
+}
 
+.adds {
+  margin-top: '25px';
+   font-weight: bold;
+    padding: 5px ;
+    padding-top: 15px;
+    color: blue;
+    text-align:center;
+}
 
 .contain {
   display: flex; 

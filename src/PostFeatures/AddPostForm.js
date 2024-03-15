@@ -2,9 +2,9 @@ import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
 import {addNewPost} from './postsSlice'
 import {selectAllPosts} from './postsSlice'
- import {selectAllUsers} from '../UserFeatures/usersSlice'
+import {selectAllUsers} from '../UserFeatures/usersSlice'
 import {useNavigate} from 'react-router-dom'
-
+import { Form, Button } from "react-bootstrap";
 
 const AddPostForm = () => {
     const dispatch = useDispatch()
@@ -14,7 +14,7 @@ const AddPostForm = () => {
     const [userId, setUserId] = useState('')
     const [addRequestStatus, setAddRequestStatus] = useState('idle')
     const navigate = useNavigate()
-    const users = useSelector(state =>state.users)
+    const users = useSelector(selectAllUsers)
 
     const onTitleChanged = e => setTitle(e.target.value)
     const onContentChanged = e => setContent(e.target.value)
@@ -41,43 +41,61 @@ const AddPostForm = () => {
 
     }
 
-    const usersOptions = users.map(user => {
-        <option key={user.id} value={user.id}>
-            {user.name}
-        </option>
-})
+//     const usersOptions = users.map(user => {
+//         <option key={user.id} value={user.id}>
+//             {user.name}
+//         </option>
+// })
 
     return (
+        <>
+         <h2 ></h2>
         <section className="contain">
-            <h2>Add a New Post</h2>
-            <form style={{width:"50%", height:"50%"}}>
-                <label htmlFor="postTitle">Post Title:</label>
-                <input
+           
+           <div>
+            <Form style={{width:"50%", height:"50%"}}>
+                <Form.Group>
+                <label htmlFor="postTitle" className='adds'>Post Type</label>
+                <Form.Select
                     type="text"
                     id="postTitle"
                     name="postTitle"
+                    className="postTitle"
+                    style={{fontWeight: 'bold'}}
                     value={title}
                     onChange={onTitleChanged}
-                />
-                <label htmlFor="postAuthor">Author:</label>
+                >
+                         <option value={"Planting"}>Planting</option>
+                         <option value={"Weather"}>Weather</option>
+                         <option value={"Harvest"}>Harvest</option>
+                         <option value={"Marketing"}>Marketing</option>
+                         <option value={"Other"}>Other</option>
+                         </Form.Select>
+                </Form.Group>
+                {/* <label htmlFor="postAuthor">Author:</label>
                 <select id="postAuthor" value={userId} onChange={onAuthorChanged}>
                     <option value=""></option>
-                    {usersOptions}
-                </select>
-                <label htmlFor="postContent">Content:</label>
+                    {/* {usersOptions} 
+                 </select> */} 
+                 <Form.Group>
+                <label htmlFor="postContent"  className='adds'>Content</label>
                 <textarea
                     id="postContent"
                     name="postContent"
+                    className="postTitle"
                     value={content}
                     onChange={onContentChanged}
                 />
-                <button
+                </Form.Group>
+                <Button
                     type="button"
                     onClick={onSavePostClicked}
                     disabled={!canSave}
-                >Save Post</button>
-            </form>
+                >Save Post</Button>
+            </Form>
+            </div>
         </section>
+        </>
     )
 }
 
