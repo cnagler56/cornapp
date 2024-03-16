@@ -10,8 +10,8 @@ const PostsExcerpts = ({ postId }) => {
     
 
     return (
-        <article style={{border: '2px solid black'}}>
-            <h2>{post.title}</h2>
+        <article className="twitter">
+            <h3>{post.title}</h3>
             <p className="excerpt">{post.body.substring(0, 75)}...</p>
             <p className="postCredit">
                 <Link to={`post/${post.id}`}>View Post</Link>

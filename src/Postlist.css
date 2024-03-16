@@ -1,0 +1,9 @@
+main {
+    display:grid;
+    place-content: center;
+}
+Filter {
+    display:grid;
+    place-content: left;
+    border:2px solid purple;
+}

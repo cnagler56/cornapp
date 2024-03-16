@@ -27,9 +27,9 @@ code {
   font-size: 1.5rem;
 }
 
-.Header svg {
+/* .Header svg {
   font-size: 2rem;
-}
+} */
 
 .Footer {
   padding: 0.75rem;
@@ -66,12 +66,12 @@ main {
   max-height: 50px;
 }
 
-.searchForm {
+/* .searchForm {
   width: 80%;
   padding: 1rem 0 0 0.5rem;
-}
+} */
 
-.searchForm input[type="text"] {
+/* .searchForm input[type="text"] {
   font-family: 'Open Sans', sans-serif;
   width: 100%;
   min-height: 48px;
@@ -79,12 +79,12 @@ main {
   padding: 0.25rem;
   border-radius: 0.25rem;
   outline: none;
-}
+} */
 
-.searchForm label {
+/* .searchForm label {
   position: absolute;
   left: -99999px;
-}
+} */
 
 .Nav ul {
   color: #fff;
@@ -135,23 +135,20 @@ main {
   padding-bottom: 1rem;
   border-bottom: 1px solid lightgray;
 }
-
-.Home .post a {
-  text-decoration: none;
+.filter {
+  display:flex;
+  flex-direction:column;
+  height: 100%;
+  width: 100%;
+  border: 2px solid black;
+  font-weight:bold;
 }
+  span {
+  display:flex;
 
-.Home .post a, 
-.Home .post a:visited {
-  color: #000;
-}
+  justify-content:space-evenly;
+}  
 
-.post:first-child {
-  margin-top: 0;
-}
-
-.post:last-child {
-  border-bottom: none;
-}
 
 .postDate {
   font-size: 0.75rem;
@@ -180,6 +177,15 @@ main {
     color: blue;
     text-align:center;
 }
+.twitter {
+  border:2px solid black;
+  
+}
+
+article:hover {
+  background-color: #f5eded;
+}
+
 
 .contain {
   display: flex; 
