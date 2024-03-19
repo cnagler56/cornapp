@@ -32,14 +32,12 @@ function App() {
     >
       
       <Header title="App Name" />
-      <Nav
-      search={search}
-      setSearch={setSearch} />
+      <Nav />
       <div className="position">
        <Routes >        
           <Route path="/" element={<Layout />}>
           <Route index element={<PostList />} />
-            {/* <Route path="Home" element={<Home/>}/> */}
+            <Route path="Home" element={<Home/>}/>
             {/* <Route index element={<Public/>}/> */}
             <Route path="Signin" element={<Signin/>}/>
             <Route path="Corn" element={<Corn/>}/>

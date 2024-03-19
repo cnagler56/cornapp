@@ -90,11 +90,11 @@ const Corn = () => {
     <>
       <div style={{ border: "2px solid black", backgroundColor: "yellow", minWidth:"50%"}}>
         <h2 className="dark">Corn</h2>
-        <div className="boxy" style={{ overflow: "scroll", maxHeight: "25em" }}>
+        <div style={{ overflow: "scroll", maxHeight: "30em" }}>
           <Form>
             <table className="table table-striped table-hover table-responsive">
               <thead style={{ fontWeight: "bold" }}>
-                <tr className="hdrs">
+                <tr>
                   <td>State</td>
                   <td>USDA</td>
                   <td>3YrAvg</td>

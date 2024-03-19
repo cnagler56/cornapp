@@ -9,7 +9,7 @@ import { Form, Button } from "react-bootstrap";
 const AddPostForm = () => {
     const dispatch = useDispatch()
 
-    const [title, setTitle] = useState('')
+    const [title, setTitle] = useState('Planting')
     const [content, setContent] = useState('')
     const [userId, setUserId] = useState('')
     const [addRequestStatus, setAddRequestStatus] = useState('idle')
@@ -56,7 +56,7 @@ const AddPostForm = () => {
            <div>
             <Form style={{width:"50%", height:"50%"}}>
                 <Form.Group>
-                <label htmlFor="postTitle" className='adds'>Post Type</label>
+                <label htmlFor="postTitle" className='adds'>Title</label>
                 <Form.Select
                     type="text"
                     id="postTitle"

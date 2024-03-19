@@ -58,7 +58,7 @@ const Display = () => {
     return (
     <>
  
-      <div style={{ border: "2px solid black"}}>
+      <div>
       <h2 className="dark">Corn</h2>      
         <div style={{ overflow: "scroll", maxHeight: "24em"}}>
           {

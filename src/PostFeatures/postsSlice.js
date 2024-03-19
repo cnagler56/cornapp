@@ -22,6 +22,13 @@ export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
     return response.data
 })
 
+export const fetchCertainPosts = createAsyncThunk('posts/fetchCertainPosts', async (title,state) => {
+    console.log(title)
+    console.log(state)
+    const response = await axios.get(POSTS_URL)
+    return response.data
+})
+
 export const addNewPost = createAsyncThunk('posts/addNewPost', async (initialPost) => {
     const response = await axios.post(POSTS_URL, initialPost)
     return response.data
@@ -148,6 +155,20 @@ export const selectPostsByUser = createSelector(
     (posts, userId) => posts.filter(post => post.userId === userId)
 )
 
+
+
 export const { increaseCount, reactionAdded } = postsSlice.actions
+
+// export const selectPostsByTitleandState = createSelector([selectAllPosts, (state, title, state) => {
+//     if(title == "All" && state =="All") {
+//     selectPostIds
+//     } else if(title =="All")  {
+//     state.posts.find(post => post.state === state)
+//     } else if(state =="All") {
+//         state.posts.find(post => post.state === state)
+// } else {
+//     state.posts.find(post => post.state === state)
+//     state.posts.find(post => post.state === state)
+// }
 
 export default postsSlice.reducer

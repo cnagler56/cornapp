@@ -7,7 +7,8 @@ const Home = () => {
 <main className="hom"
 
 >
-  <h1></h1>
+  <h1>Welcome to my Website</h1>
+  
 </main>
   )
   

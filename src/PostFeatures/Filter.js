@@ -1,23 +1,28 @@
 import React from 'react'
 import { Form, Button } from "react-bootstrap";
 import {useState} from 'react'
-// import useDispatch from 'react-redux'
+import {fetchCertainPosts} from './postsSlice'
+ import {useDispatch} from 'react-redux'
 
 export const Filter = () => {
 
     const [title, setTitle] = useState("All")
     const [state, setState] = useState("All")
-    // const dispatch = useDispatch
+     const dispatch = useDispatch()
 
 const titleChoice = () => {
    console.log(title, state)
-//    dispatch()
+    dispatch(fetchCertainPosts(title, state))
 }
 
   return (
     <div className="filter">
     <Form>
       <span>
+      <Form.Group>
+        <Form.Label>Name</Form.Label>
+        <Form.Control  style={{minwWidth:'30em'}} type="text"></Form.Control>
+      </Form.Group>
       <Form.Group>
         <Form.Label>Title</Form.Label>
         <Form.Select style={{width:'100px'}} onChange={(e) => setTitle(e.target.value)}>
@@ -86,13 +91,12 @@ const titleChoice = () => {
                      <option value={"WY"}>WY - Wyoming</option>
         </Form.Select>
       </Form.Group>
-      <Form.Group>
-        <Form.Label>Name</Form.Label>
-        <Form.Control  style={{width:'200px'}} type="text"></Form.Control>
-      </Form.Group>
+      
       </span>
     </Form>
+    <div>
     <Button style={{marginTop:'10px'}} onClick={titleChoice}>Submit</Button>
+    </div>
     </div>
   )
 }

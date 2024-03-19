@@ -11,14 +11,23 @@ const PostsExcerpts = ({ postId }) => {
 
     return (
         <article className="twitter">
-            <h3>{post.title}</h3>
-            <p className="excerpt">{post.body.substring(0, 75)}...</p>
-            <p className="postCredit">
+            <span>
+            <h4>{post.title}</h4>           
+            </span>
+            <p className="excerpt">{post.body.substring(0, 150)}...</p>
+            <div className="postCredit">
+                <span>
+            <PostAuthor userId={post.userId} />
+   
+                </span>
+                {/* <TimeAgo timestamp={post.date} /> */}
+                <span>
+                <p>{post.time}</p>
                 <Link to={`post/${post.id}`}>View Post</Link>
-                <PostAuthor userId={post.userId} />
-                <TimeAgo timestamp={post.date} />
-            </p>
-            <ReactionButtons post={post} />
+                </span>
+                
+            </div>
+            {/* <ReactionButtons post={post} /> */}
         </article>
     )
 }

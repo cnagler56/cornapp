@@ -1,12 +1,9 @@
 import {useSelector, useDispatch} from 'react-redux'
 import {selectPostIds, selectAllPosts, getPostsError, getPostsStatus} from './postsSlice'
 import PostsExcerpts from './PostsExcerpts'
-import PostAuthor from "./PostAuthor";
-import TimeAgo from "./TimeAgo";
-import ReactionButtons from "./ReactionButtons";
-import { Form, Button } from "react-bootstrap";
 import Filter from './Filter'
 import Postlist from '../Postlist.css'
+import Display from '../Display'
 
 
 
@@ -27,13 +24,17 @@ const PostList = () => {
 
   return (
 <>
+<section>
+<div className="container">
 <Filter></Filter>
-    <main style={{height: '100%', width:'100%', border:'2px solid red'}}>
+    <main className ="box">
 
-      <section style={{overflow: "scroll", maxHeight: "23em"}}>
+      <section style={{overflow: "scroll", height: "auto"}}>
           {content}
       </section>
       </main>
+      </div>
+      </section>
       </>
   )
 }
