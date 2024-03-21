@@ -1,15 +1,20 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import thunk from 'redux-thunk'
+// import {useDispatch} from 'react-redux'
 
 
-const initialState = {
+export const initialState = {
     users: [],
     yields: [],
-    yield: []
+    yield: [], 
+    token:[]
 }
 
 export const USERS = "USERS"
 export const FAILED = "FAILED"
+export const STORE_TOKEN = "STORE_TOKEN";
+export const REMOVE_TOKEN = "REMOVE_TOKEN";
+// const dispatch = useDispatch()
 
 let url = "http://localhost:8081"
 
@@ -20,6 +25,15 @@ export default (state = initialState, action) => {
         case USERS: {
             return {...state, ind: action.data}
         }
+        case STORE_TOKEN: {
+            return {...state, token: action.data}
+        }
+        case REMOVE_TOKEN: {
+            return {...state, token: null}
+        } 
+        case FAILED: {
+            return {...state, token: null}
+        } 
 
         default: {
             return {...state}

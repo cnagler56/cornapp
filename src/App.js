@@ -20,14 +20,14 @@ import EditPostForm from "./PostFeatures/EditPostForm"
 import UsersList from './UserFeatures/UsersList'
 import UserPage from './UserFeatures/UserPage'
 import Display from "./Display"
-
+import Test from "./Test"
 
 function App() {
   const [search,setSearch] = useState('')
 
 
   return (
-    <div 
+    <div className="outside"
     
     >
       
@@ -45,6 +45,7 @@ function App() {
             <Route path="PostList" element={<PostList/>}></Route>         
             <Route path="/BuySell" element={<BuySell/>}/>
             <Route path="/display" element={<Display/>}/>
+            <Route path="/test" element={<Test/>}/>
             
             <Route path="post">
               <Route index element={<AddPostForm />} />

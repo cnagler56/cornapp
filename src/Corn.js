@@ -3,7 +3,7 @@ import { Form, Button } from "react-bootstrap";
 import {useSelector} from 'react-redux'
 import { getCornYields } from './CornSlice';
 import {useDispatch} from 'react-redux'
-import {addCornGuess} from './UserFeatures/usersSlice'
+import {addCornGuess} from './CornSlice'
 
 const Corn = () => {
   const data = useSelector(getCornYields)

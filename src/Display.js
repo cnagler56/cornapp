@@ -4,7 +4,7 @@
  import {Form,Button} from 'react-bootstrap'
  import {useState} from 'react'
  import {useDispatch} from 'react-redux'
- import {addCornGuess} from './UserFeatures/usersSlice'
+ import {addCornGuess} from './CornSlice'
 
 const Display = () => {
     var yielddata = useSelector(getCornYields)

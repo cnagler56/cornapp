@@ -6,7 +6,9 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.outside {
+  margin:0 auto;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -22,7 +24,7 @@ code {
   color:white;
 }
 .Header {
-  height:5vh;
+  height:50px;
 }
 .Header h1 {
   font-size: 1.5rem;
@@ -66,7 +68,7 @@ code {
 .Nav {
   width: 100%;
   background-color: #333;
-  height: 3vh;
+  height: 25px;
 }
 
 .Nav ul {
@@ -243,9 +245,9 @@ Button {
  height:90vh;
   display:flex;
   flex-direction:column;
-  margin-top:35vh;
+  margin-top:120px;
 
-  border:2px solid black;
+  /* border:2px solid black; */
 }
 
 
@@ -256,7 +258,7 @@ Button {
   margin:auto;
   margin-top: 0;
   justify-content: space-around;
-  height: 14vh;
+  height: 125px;
   width: 35em;
   border: 2px solid black;
   font-weight:bold;
@@ -270,7 +272,14 @@ Button {
   border:2px solid red;
    margin: auto; 
  
- 
+ .corn {
+  display:flex;
+  width:50%;
+  place-content:center;
+  justify-content:center;
+  border: 2px solid black;
+  margin:auto;
+ }
  
 } 
 
