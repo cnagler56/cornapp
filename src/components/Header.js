@@ -1,6 +1,6 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
-import {auth} from './UserFeatures/usersSlice'
+import {auth} from '../Slices/usersSlice'
 
 
 const Header = (props) => {

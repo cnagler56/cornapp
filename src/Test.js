@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
-import {addCornGuess} from './CornSlice'
-import {getCornYields} from './CornSlice'
+import {addCornGuess, getCornYields} from './Slices/CornSlice'
+
 
 const Test = () => {
   const yielddata = useSelector(getCornYields);

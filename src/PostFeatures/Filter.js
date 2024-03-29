@@ -1,7 +1,7 @@
 import React from 'react'
 import { Form, Button } from "react-bootstrap";
 import {useState} from 'react'
-import {fetchCertainPosts} from './postsSlice'
+import {fetchCertainPosts} from '../Slices/postsSlice'
  import {useDispatch} from 'react-redux'
 
 export const Filter = () => {

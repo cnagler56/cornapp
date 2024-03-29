@@ -1,6 +1,6 @@
 import {createSlice, createAsyncThunk, createEntityAdapter} from '@reduxjs/toolkit';
 import axios from 'axios'
-import {loggedin} from '../loginslice'
+import {loggedin} from './loginslice'
 import {useDispatch} from 'react-redux'
 
 

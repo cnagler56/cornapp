@@ -2,7 +2,7 @@ import { Form, Button, Modal } from "react-bootstrap";
 import { useState, useRef,  useEffect } from "react";
 import {useDispatch} from 'react-redux';
 import "./index.css";
-import {postUsers, USERS, fetchUsers, getList, addUser} from "./UserFeatures/usersSlice"
+import { addUser} from "./Slices/usersSlice"
 
 
 

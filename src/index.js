@@ -5,10 +5,10 @@ import App from './App';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
  import {Provider} from "react-redux"
 import {store} from './app/store';
-import {fetchUsers} from './UserFeatures/usersSlice'
-import {fetchPosts} from './PostFeatures/postsSlice'
-import {fetchCornYield} from './CornSlice'
-import {fetchBeanYield} from './BeanSlice'
+import {fetchUsers} from './Slices/usersSlice'
+import {fetchPosts} from './Slices/postsSlice'
+import {fetchCornYield} from './Slices/CornSlice'
+import {fetchBeanYield} from './Slices/BeanSlice'
 
 store.dispatch(fetchUsers())
  store.dispatch(fetchPosts())

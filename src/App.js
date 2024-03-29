@@ -1,15 +1,15 @@
 import "bootstrap/dist/css/bootstrap.css"
-import Header from "./Header"
-import Nav from './Nav'
+import Header from "./components/Header"
+import Nav from './components/Nav'
 import Corn from './Corn'
 import Soybeans from './Soybeans'
 import PostList from './PostFeatures/PostList'
 import BuySell from './BuySell'
-import Footer from './Footer'
+import Footer from './components/Footer'
 import Home from './Home'
 import AddPostForm from './PostFeatures/AddPostForm'
 import Layout from './components/Layout'
- import Public from "./components/Public"
+
 import Signin from "./Signin"
 import SinglePostPage from "./PostFeatures/SinglePostPage"
 import { Routes, Route, Navigate} from 'react-router-dom';
@@ -23,7 +23,7 @@ import Display from "./Display"
 import Test from "./Test"
 
 function App() {
-  const [search,setSearch] = useState('')
+  // const [search,setSearch] = useState('')
 
 
   return (

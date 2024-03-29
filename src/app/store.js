@@ -1,9 +1,9 @@
 import {configureStore} from '@reduxjs/toolkit';
-import usersReducer from '../UserFeatures/usersSlice';
-import postsReducer from '../PostFeatures/postsSlice';
-import yieldsReducer from '../CornSlice'
-import yieldReducer from '../BeanSlice'
-import loginReducer from '../loginslice'
+import usersReducer from '../Slices/usersSlice';
+import postsReducer from '../Slices/postsSlice';
+import yieldsReducer from '../Slices/CornSlice'
+import yieldReducer from '../Slices/BeanSlice'
+import loginReducer from '../Slices/loginslice'
 
 
 

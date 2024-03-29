@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux'
-import {selectPostIds, selectAllPosts, getPostsError, getPostsStatus} from './postsSlice'
+import {selectPostIds, selectAllPosts, getPostsError, getPostsStatus} from '../Slices/postsSlice'
 import PostsExcerpts from './PostsExcerpts'
 import Filter from './Filter'
 import Postlist from '../Postlist.css'

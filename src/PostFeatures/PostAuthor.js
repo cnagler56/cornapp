@@ -1,4 +1,4 @@
-import {selectAllUsers} from '../UserFeatures/usersSlice'
+import {selectAllUsers} from '../Slices/usersSlice'
 import { useSelector } from "react-redux"
 
 import React from 'react'

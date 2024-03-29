@@ -1,10 +1,10 @@
-import {getBeanYields} from './BeanSlice'
+import {getBeanYields} from './Slices/BeanSlice'
 import {useSelector} from 'react-redux'
 import { Link } from 'react-router-dom'
 import {Form,Button} from 'react-bootstrap'
 import {useState} from 'react'
 import {useDispatch} from 'react-redux'
-// import {addBeanGuess} from './BeanSlice'
+ 
 
 const Soybeans = () => {
    var yielddata = useSelector(getBeanYields)

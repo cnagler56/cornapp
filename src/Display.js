@@ -1,10 +1,10 @@
- import {getCornYields} from './CornSlice'
+ import {getCornYields} from './Slices/CornSlice'
  import {useSelector} from 'react-redux'
  import { Link } from 'react-router-dom'
  import {Form,Button} from 'react-bootstrap'
  import {useState} from 'react'
  import {useDispatch} from 'react-redux'
- import {addCornGuess} from './CornSlice'
+ import {addCornGuess} from './Slices/CornSlice'
 
 const Display = () => {
     var yielddata = useSelector(getCornYields)

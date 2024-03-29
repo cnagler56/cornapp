@@ -1,9 +1,9 @@
 import React, {useState} from 'react'
 import { Form, Button } from "react-bootstrap";
 import {useSelector} from 'react-redux'
-import { getCornYields } from './CornSlice';
+import { getCornYields } from './Slices/CornSlice';
 import {useDispatch} from 'react-redux'
-import {addCornGuess} from './CornSlice'
+import {addCornGuess} from './Slices/CornSlice'
 
 const Corn = () => {
   const data = useSelector(getCornYields)

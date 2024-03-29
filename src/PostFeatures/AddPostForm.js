@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux'
-import {addNewPost} from './postsSlice'
-import {selectAllPosts} from './postsSlice'
-import {selectAllUsers} from '../UserFeatures/usersSlice'
+import {addNewPost} from '../Slices/postsSlice'
+import {selectAllPosts} from '../Slices/postsSlice'
+import {selectAllUsers} from '../Slices/usersSlice'
 import {useNavigate} from 'react-router-dom'
 import { Form, Button } from "react-bootstrap";
 

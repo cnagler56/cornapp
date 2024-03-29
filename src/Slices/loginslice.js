@@ -3,7 +3,7 @@ import {createSlice, createEntityAdapter} from '@reduxjs/toolkit';
 
 
 export const loginAdapter = createEntityAdapter({
-    selectId: (e) => e.id
+     selectId: (e) => e.userId
 })
 
 const initialState = loginAdapter.getInitialState({
