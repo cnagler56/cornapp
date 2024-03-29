@@ -9,6 +9,9 @@ body {
 .outside {
   margin:0 auto;
 }
+.modal fade {
+  background-color: gainsboro ;
+}
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -158,7 +161,9 @@ article:hover {
 .contain {
   display: flex; 
   justify-content: center;
+  margin:auto auto;
   height: 400px;
+  width:500px;
   border: 1px solid black;
   box-shadow: 1cm;
 background-color: gainsboro;
@@ -271,6 +276,11 @@ Button {
   height:76vh;
   border:2px solid red;
    margin: auto; 
+
+   .boxsize {
+      min-width: 100%;
+
+   }
  
  .corn {
   display:flex;

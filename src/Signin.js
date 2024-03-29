@@ -32,19 +32,18 @@ const errRef = useRef();
 
   function onSubmit(e) {
     e.preventDefault()
+   
     dispatch(auth(email,password))
   }
-
-
 
   return (
     <>
     <div  className="contain">
 <Form>
 <Form.Group style={{marginBottom: "40px"}}>
-  <Form.Label style={{ fontWeight: "bold" }}>Email</Form.Label>
+  <Form.Label style={{ fontWeight: "bold", marginTop:"40px" }}>Email</Form.Label>
   <Form.Control
-  style={{minWidth:"100%"}}
+   style={{minWidth:"100%"}}
   
   ref={userRef}
     onChange={(e) => setEmail(e.target.value)}
@@ -55,13 +54,13 @@ const errRef = useRef();
   <Form.Label style={{ fontWeight: "bold"}}>Password</Form.Label>
   <Form.Control
     className="boxsize"
-style={{minWidth:"100%"}}
+    style={{minWidth:"100%"}}
     type="password"
     onChange={(e) => setPassword(e.target.value)}
   ></Form.Control>
 </Form.Group>
-<div className = "buttons" style={{ padding: "5px", marginTop: "16px" }}>
-  <Button type="submit" onClick={onSubmit} className="btn btn-success">
+<div className = "buttons" style={{ padding: "5px", marginTop: "25px" }}>
+  <Button style = {{marginBottom: "25px" }}type="submit" onClick={onSubmit} className="btn btn-success">
     Submit
   </Button>
   <Register></Register>

@@ -97,13 +97,10 @@ const postsSlice = createSlice({
                 state.error = action.error.message
             })
             .addCase(addNewPost.fulfilled, (state, action) => {
-                // Fix for API post IDs:
-                // Creating sortedPosts & assigning the id 
-                // would be not be needed if the fake API 
-                // returned accurate new post IDs
+
 
                 action.payload.id = state.ids[state.ids.length - 1] + 1
-                // End fix for fake API post IDs 
+
 
                 action.payload.userId = Number(action.payload.userId)
                 action.payload.date = new Date().toISOString();
@@ -159,16 +156,5 @@ export const selectPostsByUser = createSelector(
 
 export const { increaseCount, reactionAdded } = postsSlice.actions
 
-// export const selectPostsByTitleandState = createSelector([selectAllPosts, (state, title, state) => {
-//     if(title == "All" && state =="All") {
-//     selectPostIds
-//     } else if(title =="All")  {
-//     state.posts.find(post => post.state === state)
-//     } else if(state =="All") {
-//         state.posts.find(post => post.state === state)
-// } else {
-//     state.posts.find(post => post.state === state)
-//     state.posts.find(post => post.state === state)
-// }
 
 export default postsSlice.reducer

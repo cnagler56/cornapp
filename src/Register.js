@@ -2,7 +2,7 @@ import { Form, Button, Modal } from "react-bootstrap";
 import { useState, useRef,  useEffect } from "react";
 import {useDispatch} from 'react-redux';
 import "./index.css";
-import {postUsers, USERS, fetchUsers, getList, addUser} from "./module/reducer"
+import {postUsers, USERS, fetchUsers, getList, addUser} from "./UserFeatures/usersSlice"
 
 
 
@@ -30,8 +30,7 @@ const Register = () => {
 closeModal()
 console.log(firstname, lastname, email, password,city, state,interest)
 dispatch(addUser(firstname, lastname, email, password,city, state,interest));
-  // dispatch(postUsers(firstname, lastname, email, password,city, state,interest))
-  // dispatch({type:USERS, data: id})
+
   }
 
   return (
@@ -46,7 +45,7 @@ dispatch(addUser(firstname, lastname, email, password,city, state,interest));
         Sign Up
       </Button>
    
-      <Modal show={show} onHide={closeModal} className="modal fade">
+      <Modal show={show} onHide={closeModal} style ={{backgroundColor: "gainsboro"}} className="modal fade">
         <Modal.Header style={{fontWeight:"bold", textAlign:"center"}}>Please sign up here</Modal.Header>
         <Modal.Body>
           <Form>

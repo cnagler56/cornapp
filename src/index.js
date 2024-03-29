@@ -4,7 +4,6 @@ import './index.css';
 import App from './App';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
  import {Provider} from "react-redux"
- import reducer from "./module/reducer";
 import {store} from './app/store';
 import {fetchUsers} from './UserFeatures/usersSlice'
 import {fetchPosts} from './PostFeatures/postsSlice'

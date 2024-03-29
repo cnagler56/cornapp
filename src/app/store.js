@@ -3,7 +3,7 @@ import usersReducer from '../UserFeatures/usersSlice';
 import postsReducer from '../PostFeatures/postsSlice';
 import yieldsReducer from '../CornSlice'
 import yieldReducer from '../BeanSlice'
-
+import loginReducer from '../loginslice'
 
 
 
@@ -13,7 +13,8 @@ export const store = configureStore({
         posts: postsReducer,
         yields: yieldsReducer,
         yield: yieldReducer,
-        cornYields: yieldsReducer
+        cornYields: yieldsReducer,
+        loggedin: loginReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware()
 })
