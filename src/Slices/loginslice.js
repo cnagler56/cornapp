@@ -1,29 +1,45 @@
-import {createSlice, createEntityAdapter} from '@reduxjs/toolkit';
+import {createSlice, createAsyncThunk, createEntityAdapter} from '@reduxjs/toolkit';
+import axios from 'axios'
 
 
 
-export const loginAdapter = createEntityAdapter({
-     selectId: (e) => e.userId
-})
+const URL = 'http://localhost:8081'
 
-const initialState = loginAdapter.getInitialState({
-    status: 'idle', //'idle' | 'loading' | 'succeeded' | 'failed'
-    error: null,
-    count: 0
-}
-)
+
+export const loginAdapter = createEntityAdapter()
 
  export const loginSelector = loginAdapter.getSelectors(state => state.loggedin)
  
+ export const auth = createAsyncThunk('users/auth', async (email, password, dispatch) => {
+    const loggedin = await axios.get(`${URL}/login?email=${email}&password=bullhead`);
+    if(loggedin.status > 200) {       
+         return 1   }
+        console.log(loggedin.data)
+  
+         return loggedin.data
+})
 
 export const loginslice = createSlice({
-    name: 'loggedin',
-    initialState,
+    name: 'loggedIn',
+    initialState: loginAdapter.getInitialState(),
     reducers: {
-        loggedIn: loginAdapter.addOne
+        loggedin: (state, action) => {
+            state.loggedin.push(action.payload)
+        }
+    },
+    extraReducers(builder) {
+        builder.addCase(auth.fulfilled, (state, action) => {
+            console.log(action.payload)
+           return action.payload
+        })
     }
+        
+    
      })
 
-  export const {loggedin} = loginslice.actions
+
+
+
+  export const {loggedIn} = loginslice.actions
      
 export default loginslice.reducer;

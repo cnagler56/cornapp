@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import {useDispatch} from 'react-redux'
 import "./index.css";
 import Register from "./Register.js";
-import {auth} from './Slices/usersSlice'
+import {auth} from './Slices/loginslice'
 
 
 

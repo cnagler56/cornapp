@@ -28,7 +28,14 @@ code {
 }
 .Header {
   height:50px;
+  display:flex;
+  justify-content:space-between;
 }
+
+.welcome {
+  margin: 10px;
+}
+
 .Header h1 {
   font-size: 1.5rem;
   padding:.5em;

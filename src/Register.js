@@ -16,21 +16,14 @@ const Register = () => {
   const [interest, setInterest] = useState("")
  const dispatch= useDispatch()
   const [show, setShow] = useState(false)
-
   const openModal = () => setShow(true);
   const closeModal = () => setShow(false);
   const userRef = useRef(null);
 
-  // useEffect (() => {
-  //   userRef.current.focus()
-  // },[firstname])n
-
   
   function onSubmit() {
-closeModal()
-console.log(firstname, lastname, email, password,city, state,interest)
 dispatch(addUser(firstname, lastname, email, password,city, state,interest));
-
+closeModal()
   }
 
   return (

@@ -9,7 +9,7 @@ import loginReducer from '../Slices/loginslice'
 
 export const store = configureStore({
     reducer: {
-         users: usersReducer,
+        users: usersReducer,
         posts: postsReducer,
         yields: yieldsReducer,
         yield: yieldReducer,
