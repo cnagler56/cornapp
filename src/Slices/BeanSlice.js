@@ -1,14 +1,21 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios'
+import {useEffect} from 'react'
 
 const USERS_URL = 'http://localhost:8081/beans';
 
+
+
 const initialState = []
 
+
+
 export const fetchBeanYield = createAsyncThunk('beans/fetchBeanYield', async () => {
+    
     const response = await axios.get(USERS_URL);
     console.log(response)
     return response.data
+
 })
 
 export const BeanSlice = createSlice({

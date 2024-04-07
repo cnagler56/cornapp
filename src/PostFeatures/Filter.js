@@ -1,25 +1,30 @@
 import React from 'react'
 import { Form, Button } from "react-bootstrap";
 import {useState} from 'react'
-import {fetchCertainPosts} from '../Slices/postsSlice'
+import {fetchPosts} from '../Slices/postsSlice'
  import {useDispatch} from 'react-redux'
 
 export const Filter = () => {
 
-    const [title, setTitle] = useState("All")
-    const [state, setState] = useState("All")
+    const [title, setTitle] = useState("")
+    const [state, setState] = useState()
      const dispatch = useDispatch()
 
-const titleChoice = () => {
-   console.log(title, state)
-    dispatch(fetchCertainPosts(title, state))
+     const handleStateChange = (e) => {
+      setState(e.target.value);
+   
+    };
+
+const titleChoice = (state) => {
+   console.log(state)
+    dispatch(fetchPosts(state))
 }
 
   return (
     <div className="filter">
     <Form>
       <span>
-      <Form.Group>
+      {/* <Form.Group>
         <Form.Label>Name</Form.Label>
         <Form.Control  style={{minwWidth:'30em'}} type="text"></Form.Control>
       </Form.Group>
@@ -33,10 +38,10 @@ const titleChoice = () => {
                      <option value={"Marketing"}>Marketing</option>
                      <option value={"Other"}>Other</option>
         </Form.Select>
-      </Form.Group>
+      </Form.Group> */}
       <Form.Group>
         <Form.Label>State</Form.Label>
-        <Form.Select style={{width:'100px'}} onChange={(e) => setState(e.target.value)}>
+        <Form.Select style={{width:'100px'}} value={state} onChange={handleStateChange}>
                      <option value={"All"}>All</option>
                      <option value={"AL"}>AL - Alabama</option>
                      <option value={"AK"}>AK - Alaska</option>                        

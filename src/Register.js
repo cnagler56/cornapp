@@ -7,8 +7,8 @@ import { addUser} from "./Slices/usersSlice"
 
 
 const Register = () => {
-  const [firstname, setFirstname] = useState("");
-  const [lastname, setLastname] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");  
   const [password, setPassword] = useState("");
   const [city, setCity] = useState('')
@@ -22,7 +22,8 @@ const Register = () => {
 
   
   function onSubmit() {
-dispatch(addUser(firstname, lastname, email, password,city, state,interest));
+    console.log(lastName, city, state)
+dispatch(addUser(firstName, lastName, email, password,city, state,interest));
 closeModal()
   }
 
@@ -50,7 +51,7 @@ closeModal()
                 style={{minWidth:"100%" ,border: "1px solid black"}}
                  type="text"
                 
-                onChange={(e) => setFirstname(e.target.value)}
+                onChange={(e) => setFirstName(e.target.value)}
               ></Form.Control>
             </Form.Group>
             <Form.Group className="forms">
@@ -59,7 +60,7 @@ closeModal()
                 style={{minWidth:"100%" ,border: "1px solid black"}}
                 type="text"
                 className="boxsize"
-                onChange={(e) => setLastname(e.target.value)}
+                onChange={(e) => setLastName(e.target.value)}
               ></Form.Control>
             </Form.Group>
             <Form.Group className="forms">

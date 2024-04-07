@@ -11,7 +11,7 @@ import {fetchCornYield} from './Slices/CornSlice'
 import {fetchBeanYield} from './Slices/BeanSlice'
 
 store.dispatch(fetchUsers())
- store.dispatch(fetchPosts())
+ store.dispatch(fetchPosts("All"))
 store.dispatch(fetchCornYield())
  store.dispatch(fetchBeanYield())
 

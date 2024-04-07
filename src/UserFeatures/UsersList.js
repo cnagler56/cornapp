@@ -6,7 +6,7 @@ const UsersList = () => {
     const users = useSelector(selectAllUsers)
     
   
-    const renderedUsers = users.map(user => (
+    const renderedUsers = users.data.map(user => (
         <li key={user.id}>
             <Link to={`/user/${user.id}`}>{user.firstName} {user.lastName}</Link>
             <div>{user.city}</div>

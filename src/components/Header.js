@@ -15,7 +15,7 @@ const Header = (props) => {
     const capitalizedLastName = capitalizeFirstLetter(users.lastName);
     welcomeMessage = `Welcome ${capitalizedFirstName} ${capitalizedLastName}`;
   } else {
-    welcomeMessage = 'Welcome Stranger';
+    welcomeMessage = 'Log In you Coward';
   }
 
   return (

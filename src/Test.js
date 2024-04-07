@@ -85,7 +85,7 @@ const Test = () => {
                       <Form.Control
                         style={{ minWidth: '5em' }}
                         placeholder={data.yield}
-                        value={yieldValues[data.state.toLowerCase()]} // assuming state names are lowercase
+                        value={yieldValues[data.state.toLowerCase()]} 
                         onChange={e => updateYieldValue(data.state.toLowerCase(), e.target.value)}
                         type="number"
                       />

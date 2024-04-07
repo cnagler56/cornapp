@@ -3,6 +3,7 @@ import {sub } from 'date-fns'
 import axios from 'axios'
  
 const POSTS_URL = 'http://localhost:8081/posts'
+const POSTS_FIL = 'http://localhost:8081/filter'
 
 
 
@@ -17,22 +18,48 @@ const initialState = postsAdapter.getInitialState({
     count: 0
 })
 
-export const fetchPosts = createAsyncThunk('posts/fetchPosts', async () => {
-    const response = await axios.get(POSTS_URL)
+export const fetchPosts = createAsyncThunk('posts/fetchPosts', async (state="All") => {
+    const response = await axios.get(`${POSTS_URL}?state=${state}`)
     return response.data
 })
 
-export const fetchCertainPosts = createAsyncThunk('posts/fetchCertainPosts', async (title,state) => {
-    console.log(title)
+export const fetchCertainPosts = createAsyncThunk('posts/fetchCertainPosts', async (state) => {
+
     console.log(state)
-    const response = await axios.get(POSTS_URL)
+    const response = await axios.get(`${POSTS_URL}?state=${state}`)
     return response.data
 })
 
-export const addNewPost = createAsyncThunk('posts/addNewPost', async (initialPost) => {
-    const response = await axios.post(POSTS_URL, initialPost)
-    return response.data
+export const addNewPost = createAsyncThunk('posts/addNewPost', async (title, content, name, city, state, userId, time) => {
+  console.log(city)
+    const response = await axios.post(`http://localhost:8080/addpost?title=${title}&content=${content}&name=${name}&city=${city}&state=${state}&userId=${userId}&time=${time}`)
+    console.log(response)
+    return response
 })
+
+// export const addNewPost = createAsyncThunk('posts/addNewPost', async (title, content, name, city, state, userId, time) => {
+//     // const {title, content, name, city, state, userId, time} = payload
+//  console.log(content)
+//     const response = await axios.post('http://localhost:8081/addpost', 
+//     {
+//         method:"POST",
+//         body: JSON.stringify({
+//             title,
+//             content,
+//             name,
+//             city,
+//             state,
+//             userId,
+//             time
+//         }),
+//         headers: {
+//             "Content-Type": "application/json"
+//         }
+//     })
+//     const data = await response.json()
+
+//     return data
+//   })
 
 export const updatePost = createAsyncThunk('posts/updatePost', async (initialPost) => {
     const { id } = initialPost;
