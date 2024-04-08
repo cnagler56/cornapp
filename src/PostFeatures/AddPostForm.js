@@ -9,8 +9,6 @@ import { Form, Button } from "react-bootstrap";
 const AddPostForm = () => {
     const dispatch = useDispatch()
     const logged = useSelector(state => state.loggedin)
-console.log(logged)
-console.log(logged.city)
     const [title, setTitle] = useState('Planting')
     const [content, setContent] = useState('')
     const [userId, setUserId] = useState('')

@@ -5,6 +5,7 @@ import {addCornGuess, getCornYields} from './Slices/CornSlice'
 
 
 const Test = () => {
+  const logged = useSelector(state => state.loggedin)
   const yielddata = useSelector(getCornYields);
   const sortedArray = yielddata.slice().sort((a, b) => b.acres - a.acres);
   const dispatch = useDispatch();
@@ -55,7 +56,9 @@ const Test = () => {
 
   // Function to handle form submission
   const onSubmit = () => {
-    dispatch(addCornGuess(yieldValues)); // assuming your action creator accepts an object with yield values
+    const userId = logged.userId
+    console.log(yieldValues)
+    dispatch(addCornGuess({yieldValues, userId})); 
   };
 
   return (
