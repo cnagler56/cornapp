@@ -5,13 +5,14 @@ import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import { selectPostById } from "../Slices/postsSlice";
 import SinglePostPage from './SinglePostPage'
+import {ItemWrapper} from '../styledComponents'
 
 const PostsExcerpts = ({ postId }) => {
     const post = useSelector(state => selectPostById(state, postId))
   
 
     return (
-        <article className="twitter">
+        <ItemWrapper>
             <span>
             <h4>{post.title}</h4>           
             </span>
@@ -32,7 +33,7 @@ const PostsExcerpts = ({ postId }) => {
                 
             </div>
             {/* <ReactionButtons post={post} /> */}
-        </article>
+        </ItemWrapper>
     )
 }
 export default PostsExcerpts

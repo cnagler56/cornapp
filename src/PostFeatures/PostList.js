@@ -2,9 +2,7 @@ import {useSelector, useDispatch} from 'react-redux'
 import {selectPostIds, selectAllPosts, getPostsError, getPostsStatus} from '../Slices/postsSlice'
 import PostsExcerpts from './PostsExcerpts'
 import Filter from './Filter'
-import Postlist from '../Postlist.css'
-import Display from '../Display'
-
+import {PostWrapper, Box} from'../styledComponents'
 
 
 const PostList = () => {
@@ -27,15 +25,15 @@ const PostList = () => {
   return (
 <>
 <section>
-<div className="container">
+<PostWrapper>
 <Filter></Filter>
-    <main className ="box">
+    <Box>
 
       <section style={{overflow: "scroll", height: "auto"}}>
           {content}
       </section>
-      </main>
-      </div>
+      </Box>
+      </PostWrapper>
       </section>
       </>
   )

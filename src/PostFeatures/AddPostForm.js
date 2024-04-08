@@ -28,7 +28,7 @@ const AddPostForm = () => {
         
         const city = logged.city
        
-        const time = 12/24/2022
+        const time = '12/24/2022'
         const state = logged.state
         const userId = logged.userId
         if (canSave) {

@@ -153,12 +153,6 @@ code {
     color: blue;
     text-align:center;
 }
-.twitter {
-  border:2px solid black;
-  height: 10em;
-  margin:auto;
-  
-}
 
 article:hover {
   background-color: #FFDE00;
@@ -253,36 +247,6 @@ Button {
   display: flex;
   justify-content: center;
 }
-.container {
- height:90vh;
-  display:flex;
-  flex-direction:column;
-  margin-top:120px;
-
-  /* border:2px solid black; */
-}
-
-
-.filter {
-  /* display:flex; */
-  flex-direction:row;
-  place-content:center;
-  margin:auto;
-  margin-top: 0;
-  justify-content: space-around;
-  height: 125px;
-  width: 35em;
-  border: 2px solid black;
-  font-weight:bold;
-} 
-
- .box {
-  flex-grow: 1;
-   
-  width: 35em;
-  height:76vh;
-  border:2px solid red;
-   margin: auto; 
 
    .boxsize {
       min-width: 100%;
@@ -298,5 +262,5 @@ Button {
   margin:auto;
  }
  
-} 
+ 
 

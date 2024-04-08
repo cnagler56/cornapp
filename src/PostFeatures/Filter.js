@@ -3,6 +3,9 @@ import { Form, Button } from "react-bootstrap";
 import {useState} from 'react'
 import {fetchPosts} from '../Slices/postsSlice'
  import {useDispatch} from 'react-redux'
+ import {Filtered} from '../styledComponents'
+
+
 
 export const Filter = () => {
 
@@ -21,7 +24,7 @@ const titleChoice = (state) => {
 }
 
   return (
-    <div className="filter">
+    <Filtered>
     <Form>
       <span>
       {/* <Form.Group>
@@ -102,7 +105,7 @@ const titleChoice = (state) => {
     <div>
     <Button style={{marginTop:'10px'}} onClick={titleChoice}>Submit</Button>
     </div>
-    </div>
+    </Filtered>
   )
 }
 

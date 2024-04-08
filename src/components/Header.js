@@ -1,6 +1,7 @@
 import React from 'react'
 import {useSelector} from 'react-redux'
 import {auth} from '../Slices/usersSlice'
+import {Link} from 'react-router-dom'
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
@@ -15,7 +16,8 @@ const Header = (props) => {
     const capitalizedLastName = capitalizeFirstLetter(users.lastName);
     welcomeMessage = `Welcome ${capitalizedFirstName} ${capitalizedLastName}`;
   } else {
-    welcomeMessage = 'Log In you Coward';
+     welcomeMessage = <Link to= "/Signin">Log In You Coward</Link> ;
+    
   }
 
   return (
@@ -24,13 +26,10 @@ const Header = (props) => {
         {props.title}
         </h1>
         <div className='welcome'>
-        {/* {users.firstName && users.lastName ? 
-          `Welcome ${users.firstName} ${users.lastName}` : 
-          'Welcome Stranger' } */}
           {welcomeMessage}
           </div>
 
-        {/* // <div className='welcome'>Welcome {users.firstName} {users.lastName}</div> */}
+   
         </header>
   )
 }
