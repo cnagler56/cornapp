@@ -13,9 +13,6 @@ import Layout from './components/Layout'
 import Signin from "./Signin"
 import SinglePostPage from "./PostFeatures/SinglePostPage"
 import { Routes, Route, Navigate} from 'react-router-dom';
-import { useState, useEffect } from 'react';
-//  import { format } from 'date-fns';
-import background from "./img/farm.jpg"
 import EditPostForm from "./PostFeatures/EditPostForm"
 import UsersList from './UserFeatures/UsersList'
 import UserPage from './UserFeatures/UserPage'
@@ -23,22 +20,19 @@ import Display from "./Display"
 import Test from "./Test"
 
 function App() {
-  // const [search,setSearch] = useState('')
-
 
   return (
     <div className="outside"
     
     >
       
-      <Header title="App Name" />
+      <Header title="JustForAg" />
       <Nav />
       <div className="position">
        <Routes >        
           <Route path="/" element={<Layout />}>
-          <Route index element={<PostList />} />
-            <Route path="Home" element={<Home/>}/>
-            {/* <Route index element={<Public/>}/> */}
+          <Route index element={<Home />} />
+            <Route path="Home" element={<PostList/>}/>
             <Route path="Signin" element={<Signin/>}/>
             <Route path="Corn" element={<Corn/>}/>
             <Route path="/Soybeans" element={<Soybeans/>}/>

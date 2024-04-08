@@ -23,7 +23,7 @@ const Register = () => {
   
   function onSubmit() {
     console.log(lastName, city, state)
-dispatch(addUser(firstName, lastName, email, password,city, state,interest));
+dispatch(addUser({firstName, lastName, email, password,city, state,interest}));
 closeModal()
   }
 

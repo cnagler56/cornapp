@@ -32,8 +32,8 @@ const errRef = useRef();
 
   function onSubmit(e) {
     e.preventDefault()
-   
-    dispatch(auth(email,password))
+   console.log(password)
+    dispatch(auth({email,password}))
   }
 
   return (

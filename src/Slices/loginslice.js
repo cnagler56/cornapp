@@ -10,12 +10,11 @@ export const loginAdapter = createEntityAdapter()
 
  export const loginSelector = loginAdapter.getSelectors(state => state.loggedin)
  
- export const auth = createAsyncThunk('users/auth', async (email, password, dispatch) => {
-    const loggedin = await axios.get(`${URL}/login?email=${email}&password=bullhead`);
+ export const auth = createAsyncThunk('users/auth', async ({email, password}, thunkAPI) => {
+    const loggedin = await axios.get(`${URL}/login?email=${email}&password=${password}`);
     if(loggedin.status > 200) {       
          return 1   }
-        console.log(loggedin.data)
-  
+      
          return loggedin.data
 })
 
@@ -29,7 +28,6 @@ export const loginslice = createSlice({
     },
     extraReducers(builder) {
         builder.addCase(auth.fulfilled, (state, action) => {
-            console.log(action.payload)
            return action.payload
         })
     }

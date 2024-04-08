@@ -9,7 +9,8 @@ import { Form, Button } from "react-bootstrap";
 const AddPostForm = () => {
     const dispatch = useDispatch()
     const logged = useSelector(state => state.loggedin)
-
+console.log(logged)
+console.log(logged.city)
     const [title, setTitle] = useState('Planting')
     const [content, setContent] = useState('')
     const [userId, setUserId] = useState('')
@@ -25,16 +26,17 @@ const AddPostForm = () => {
 
     const onSavePostClicked = () => {
         const name = logged.firstName + " " + logged.lastName
-        
         const city = logged.city
-       
+        console.log(city)
+        
         const time = '12/24/2022'
         const state = logged.state
         const userId = logged.userId
         if (canSave) {
             try {
                 setAddRequestStatus('pending')
-                dispatch(addNewPost( title, content, time, name, city, state, userId))
+                console.log(city)
+                dispatch(addNewPost( {title, content, time, name, city, state, userId}))
 
                 setTitle('')
                 setContent('')

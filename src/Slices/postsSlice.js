@@ -32,9 +32,9 @@ export const fetchCertainPosts = createAsyncThunk('posts/fetchCertainPosts', asy
     return response.data
 })
 
-export const addNewPost = createAsyncThunk('posts/addNewPost', async (title, content, name, city, state, userId, time) => {
+export const addNewPost = createAsyncThunk('posts/addNewPost', async ({title, content, name, city, state, userId, time}) => {
   console.log(city)
-    const response = await axios.post(`http://localhost:8081/addpost?title=${title}&content=${content}&name=${name}&city=${city}&state=${state}&userId=${userId}&time=${time}`)
+    const response = await axios.post(`http://localhost:8081/addpost`, {title, content, name, city,state, userId, time})
     console.log(response)
     return response
 })

@@ -40,10 +40,8 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
 
 
 
-export const addUser   = createAsyncThunk('users', async(firstName,lastName, email,password,city,state,interest)=> {
-console.log("made it")
-    //  const {firstName,lastName,email,password,city,state,interest} = payload
-    console.log(lastName)
+export const addUser   = createAsyncThunk('users/AddUser', async(payload)=> {
+      const {firstName,lastName,email,password,city,state,interest} = payload
     const response = await fetch('http://localhost:8081/register',
     {
                     method: "POST",
