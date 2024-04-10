@@ -4,13 +4,15 @@ export const PostWrapper = styled.div`
 height:90vh;
 display:flex;
 flex-direction:column;
-margin-top:120px;
+ margin-top:4px;
+
 `
 export const Box = styled.div`
 flex-grow: 1; 
 width: 35em;
 height:76vh;
-// border:2px solid red;
+ border:2px solid black;
+ overflow:scroll;
  margin: auto; 
 `
 
@@ -32,4 +34,12 @@ border:2px solid black;
 height: 14em;
 margin:auto;
 `
-
+export const GuessView = styled.div`
+border: 2px solid black;
+height:20em;
+padding:4em;
+width: 25em; 
+display:flex;
+flex-direction:column;
+justify-content:center;
+`

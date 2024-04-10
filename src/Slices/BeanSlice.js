@@ -13,7 +13,6 @@ const initialState = []
 export const fetchBeanYield = createAsyncThunk('beans/fetchBeanYield', async () => {
     
     const response = await axios.get(USERS_URL);
-    console.log(response)
     return response.data
 
 })

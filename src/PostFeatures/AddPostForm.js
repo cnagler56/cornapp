@@ -20,7 +20,9 @@ const AddPostForm = () => {
     const onContentChanged = e => setContent(e.target.value)
     const onAuthorChanged = e => setUserId(e.target.value)
 
-    const canSave = [title, content].every(Boolean) && addRequestStatus === 'idle'
+ 
+    const canSave = [title, content].every(Boolean) && addRequestStatus === 'idle' && (logged.userId > 0)
+  
 
     const onSavePostClicked = () => {
         const name = logged.firstName + " " + logged.lastName
@@ -49,18 +51,13 @@ const AddPostForm = () => {
 
     }
 
-//     const usersOptions = users.map(user => {
-//         <option key={user.id} value={user.id}>
-//             {user.name}
-//         </option>
-// })
 
     return (
         <>
          <h2 ></h2>
         <section className="contain">
-           
            <div>
+            
             <Form style={{width:"50%", height:"50%"}}>
                 <Form.Group>
                 <label htmlFor="postTitle" className='adds'>Title</label>
@@ -80,11 +77,6 @@ const AddPostForm = () => {
                          <option value={"Other"}>Other</option>
                          </Form.Select>
                 </Form.Group>
-                {/* <label htmlFor="postAuthor">Author:</label>
-                <select id="postAuthor" value={userId} onChange={onAuthorChanged}>
-                    <option value=""></option>
-                    {/* {usersOptions} 
-                 </select> */} 
                  <Form.Group>
                 <label htmlFor="postContent"  className='adds'>Content</label>
                 <textarea
@@ -96,12 +88,15 @@ const AddPostForm = () => {
                 />
                 </Form.Group>
                 <Button
+              
                     type="button"
                     onClick={onSavePostClicked}
-                    disabled={!canSave}
+                    disabled={!canSave} 
+                    style={{marginTop:"5px", textAlign:"center", width:"100%"}}
                 >Save Post</Button>
             </Form>
             </div>
+        
         </section>
         </>
     )

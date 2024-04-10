@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css"
 import Header from "./components/Header"
 import Nav from './components/Nav'
+import Can from './Can'
 import Corn from './Corn'
 import Soybeans from './Soybeans'
 import PostList from './PostFeatures/PostList'
@@ -40,6 +41,7 @@ function App() {
             <Route path="/BuySell" element={<BuySell/>}/>
             <Route path="/display" element={<Display/>}/>
             <Route path="/test" element={<Test/>}/>
+            <Route path="/Can" element={<Can/>}/>
             
             <Route path="post">
               <Route index element={<AddPostForm />} />

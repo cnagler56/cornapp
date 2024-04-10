@@ -13,7 +13,7 @@ const Display = () => {
   });
   console.log(sortedArray)
   const dispatch = useDispatch()
-    const [ia, setIA] = useState(0);
+    const [ia, setIA] = useState(180);
     const [il, setIL] = useState(203);
     const [ne, setNE] = useState(173);
     const [mn, setMN] = useState(181);

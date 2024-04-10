@@ -45,6 +45,8 @@ const Soybeans = () => {
    const [tx, setTX] = useState(130);
    const [va, setVA] = useState(154);
   const [nj, setNJ] = useState();
+
+  
    function onSubmit() {
  
 

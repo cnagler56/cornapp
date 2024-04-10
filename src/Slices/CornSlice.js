@@ -19,6 +19,12 @@ export const addCornGuess = createAsyncThunk('posts/cornGuess', async ({yieldVal
     return response.data
 })
 
+export const submitCornGuess = createAsyncThunk('cornGuess', async({yieldGuess, name, state, interest}) => {
+    console.log(interest)
+    const response = await axios.post("http://localhost:8081/cornGuess",{yieldGuess, name, state, interest})
+    return response.data
+})
+
 export const CornSlice = createSlice({
     name: 'yields',
     initialState,
@@ -29,6 +35,6 @@ export const CornSlice = createSlice({
         })
     }
 })
-
 export const getCornYields = state => state.yields;
+
 export default CornSlice.reducer;

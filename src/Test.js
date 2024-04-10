@@ -2,15 +2,21 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 import {addCornGuess, getCornYields} from './Slices/CornSlice'
-
+// import {getCornYields, getAcreage} from './selectors'
+import GuessBox from './GuessBox'
 
 const Test = () => {
+  const [corn, setCorn] = useState()
   const logged = useSelector(state => state.loggedin)
   const yielddata = useSelector(getCornYields);
+  const acreage = useSelector(state => state.yields)
+  let i = 0
+  
   const sortedArray = yielddata.slice().sort((a, b) => b.acres - a.acres);
   const dispatch = useDispatch();
+ 
 
-  // State to hold yield values for each state
+  
   const [yieldValues, setYieldValues] = useState({
     ia: 0,
     il: 203,
@@ -54,15 +60,39 @@ const Test = () => {
     }));
   };
 
-  // Function to handle form submission
+  
+
+ 
   const onSubmit = () => {
     const userId = logged.userId
-    console.log(yieldValues)
+    let totalWeightedYield = 0;
+    let totalAcres = 0;
+    let acresValue = 0
+    sortedArray.forEach(data => {
+     
+      const state = data.state.toLowerCase();
+      const yieldValue = yieldValues[state];
+      const acresValue = data.acres
+       const weightedYield = yieldValue * acresValue;
+      
+     
+
+      totalWeightedYield += weightedYield;
+      totalAcres += acresValue;
+      
+      console.log(yieldValue)
+      i++
+    });
+
+    const averageYield = totalWeightedYield / totalAcres;
+console.log(averageYield)
+setCorn(averageYield.toFixed(2))
     dispatch(addCornGuess({yieldValues, userId})); 
   };
 
   return (
     <>
+    <main className="container">
       <div className="corn">
         <h2 className="dark">Corn</h2>
         <div style={{ overflow: 'scroll', maxHeight: '24em' }}>
@@ -100,12 +130,19 @@ const Test = () => {
                 </tbody>
               </table>
             </Form>
+           
           ))}
         </div>
         <Button style={{ margin: '1em' }} type="submit" onClick={onSubmit}>
           Button
         </Button>
       </div>
+      
+      <div className="guess">
+      <GuessBox yield={corn} logged={logged}/>
+      </div>
+      </main>
+      
     </>
   );
 };
