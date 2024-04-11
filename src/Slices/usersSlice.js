@@ -41,13 +41,14 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
 
 
 export const addUser   = createAsyncThunk('users/AddUser', async(payload)=> {
-      const {firstName,lastName,email,password,city,state,interest} = payload
+      const {firstName,lastName,name, email,password,city,state,interest} = payload
     const response = await fetch('http://localhost:8081/register',
     {
                     method: "POST",
                     body: JSON.stringify({
                         firstName,
                         lastName,
+                        name,
                         email,
                         password,
                         city,
@@ -64,7 +65,7 @@ export const addUser   = createAsyncThunk('users/AddUser', async(payload)=> {
         // return dispatch({type: FAILED, data: data})
         console.log("failed")
     }
-console.log("success")
+
 return 2
 
   })

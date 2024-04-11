@@ -4,6 +4,8 @@ import { Form, Button } from 'react-bootstrap';
 import {addCornGuess, getCornYields} from './Slices/CornSlice'
 // import {getCornYields, getAcreage} from './selectors'
 import GuessBox from './GuessBox'
+import GuessScroll from './GuessScroll'
+import {fetchCornEstimate} from './Slices/CornGuessSlice'
 
 const Test = () => {
   const [corn, setCorn] = useState()
@@ -11,11 +13,11 @@ const Test = () => {
   const yielddata = useSelector(getCornYields);
   const acreage = useSelector(state => state.yields)
   let i = 0
-  
+  console.log(yielddata.yield)
   const sortedArray = yielddata.slice().sort((a, b) => b.acres - a.acres);
   const dispatch = useDispatch();
  
-
+ 
   
   const [yieldValues, setYieldValues] = useState({
     ia: 0,
@@ -79,15 +81,13 @@ const Test = () => {
 
       totalWeightedYield += weightedYield;
       totalAcres += acresValue;
-      
-      console.log(yieldValue)
       i++
     });
 
     const averageYield = totalWeightedYield / totalAcres;
-console.log(averageYield)
-setCorn(averageYield.toFixed(2))
-    dispatch(addCornGuess({yieldValues, userId})); 
+    const avgyield = parseInt(averageYield)
+    setCorn(avgyield.toFixed(2))
+    
   };
 
   return (
@@ -96,19 +96,21 @@ setCorn(averageYield.toFixed(2))
       <div className="corn">
         <h2 className="dark">Corn</h2>
         <div style={{ overflow: 'scroll', maxHeight: '24em' }}>
-          {sortedArray.map(data => (
-            <Form key={data.id}>
+          
+            <Form >
               <table className="table table-striped table-hover table-responsive">
                 <thead style={{ fontWeight: 'bold' }}>
                   <tr>
                     <td>State</td>
+                    <td>Your Est</td>
                     <td>USDA</td>
                     {/* <td>3YrAvg</td> */}
                     <td>Acres</td>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                {sortedArray.map(data => (
+                  <tr key={data.id}>
                     <td>
                       <Form.Label className="label" style={{ fontWeight: 'bold' }}>
                         {data.state}
@@ -127,15 +129,19 @@ setCorn(averageYield.toFixed(2))
                     {/* <td>{data.avg}</td> */}
                     <td>{data.acres}</td>
                   </tr>
+                    ))}
                 </tbody>
               </table>
             </Form>
            
-          ))}
+        
         </div>
         <Button style={{ margin: '1em' }} type="submit" onClick={onSubmit}>
-          Button
+          Calculate
         </Button>
+      </div>
+      <div className="scroll">
+        <GuessScroll />
       </div>
       
       <div className="guess">

@@ -4,7 +4,7 @@ import postsReducer from '../Slices/postsSlice';
 import yieldsReducer from '../Slices/CornSlice'
 import yieldReducer from '../Slices/BeanSlice'
 import loginReducer from '../Slices/loginslice'
-
+import cornguessReducer from '../Slices/CornGuessSlice'
 
 
 export const store = configureStore({
@@ -14,7 +14,8 @@ export const store = configureStore({
         yields: yieldsReducer,
         yield: yieldReducer,
         cornYields: yieldsReducer,
-        loggedin: loginReducer
+        loggedin: loginReducer,
+        cornguess: cornguessReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware()
 })

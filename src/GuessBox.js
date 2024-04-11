@@ -6,14 +6,24 @@ import {useDispatch} from 'react-redux'
 
 const GuessBox = (props) => {
     const dispatch = useDispatch()
+
+    const yiel = props.yield
+    const name = props.logged.name
+    const state = props.logged.state
+    const interest = props.logged.interest
+    const userId = props.logged.userId
+    const grain = "Corn"
+
     let content = props.yield ?
-    (  <div>Guesstimate: {props.yield} </div>) :
+    (  <p>Guesstimate: {props.yield} </p>) :
     ( <p>Use the chart to calculate your estimate of the National Corn Yield</p>)
 
     const onSubmit = () => {
-        console.log(props.yield)
-        console.log(props.logged.state)
-        dispatch(submitCornGuess(props.yield, props.logged.name, props.logged.state, props.logged.interest))
+      const currentDate = new Date()
+      const formatDate = currentDate.toLocaleDateString('en-US',{ month:'long', day: 'numeric', year: 'numeric'})
+      const datum = "LetsGOOO"
+
+        dispatch(submitCornGuess({grain,yiel, name, state, interest, userId,datum}))
     }
     
 

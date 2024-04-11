@@ -3,7 +3,7 @@ import {selectPostIds, selectAllPosts, getPostsError, getPostsStatus} from '../S
 import PostsExcerpts from './PostsExcerpts'
 import Filter from './Filter'
 import {PostWrapper, Box} from'../styledComponents'
-
+import AddPostForm from './AddPostForm'
 
 const PostList = () => {
 
@@ -24,17 +24,22 @@ const PostList = () => {
 
   return (
 <>
-<section>
-<PostWrapper>
+<section className="postpage">
+<PostWrapper className='postchild'>
 <Filter></Filter>
     <Box>
 
-      <section style={{overflow: "scroll", height: "auto"}}>
+      <section style={{overflow: "scroll"}}>
           {content}
       </section>
       </Box>
       </PostWrapper>
+      <div className="postchild2">
+      <AddPostForm />
+      </div>
       </section>
+      
+
       </>
   )
 }

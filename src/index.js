@@ -9,11 +9,13 @@ import {fetchUsers} from './Slices/usersSlice'
 import {fetchPosts} from './Slices/postsSlice'
 import {fetchCornYield} from './Slices/CornSlice'
 import {fetchBeanYield} from './Slices/BeanSlice'
+import {fetchCornEstimate} from './Slices/CornGuessSlice'
 
 store.dispatch(fetchUsers())
  store.dispatch(fetchPosts())
 store.dispatch(fetchCornYield())
  store.dispatch(fetchBeanYield())
+ store.dispatch(fetchCornEstimate())
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 

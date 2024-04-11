@@ -35,12 +35,12 @@ function App() {
           <Route index element={<Home />} />
             <Route path="Posts" element={<PostList/>}/>
             <Route path="Signin" element={<Signin/>}/>
-            <Route path="Corn" element={<Corn/>}/>
+            { <Route path="Corn" element={<Corn/>}/> }
             <Route path="/Soybeans" element={<Soybeans/>}/>
             <Route path="PostList" element={<PostList/>}></Route>         
             <Route path="/BuySell" element={<BuySell/>}/>
             <Route path="/display" element={<Display/>}/>
-            <Route path="/test" element={<Test/>}/>
+            <Route path="/Corn" element={<Test/>}/>
             <Route path="/Can" element={<Can/>}/>
             
             <Route path="post">
