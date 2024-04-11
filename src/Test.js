@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Form, Button } from 'react-bootstrap';
 import {addCornGuess, getCornYields} from './Slices/CornSlice'
@@ -10,22 +10,33 @@ import {fetchCornEstimate} from './Slices/CornGuessSlice'
 const Test = () => {
   const [corn, setCorn] = useState()
   const logged = useSelector(state => state.loggedin)
+  const [loading, setLoading] = useState(true);
   const yielddata = useSelector(getCornYields);
-  const acreage = useSelector(state => state.yields)
+  // const acreage = useSelector(state => state.yields)
   let i = 0
-  console.log(yielddata.yield)
+
+
+
+
+ 
   const sortedArray = yielddata.slice().sort((a, b) => b.acres - a.acres);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
  
- 
+  const initialYieldValues = sortedArray.reduce((acc, data) => {
+    acc[data.state.toLowerCase()] = data.yield;  
+    return acc;
+  }, {});
+  console.log(initialYieldValues)
+
+  // const [yieldValues, setYieldValues] = useState(initialYieldValues);
   
   const [yieldValues, setYieldValues] = useState({
-    ia: 0,
+    ia: 201,
     il: 203,
     ne: 173,
     mn: 181,
     sd: 152,
-    ind: 200,
+    in: 200,
     nd: 143,
     wi: 171,
     oh: 195,
@@ -52,6 +63,15 @@ const Test = () => {
     tx: 130,
     va: 154,
     wa: 235,
+    mt: 180,
+    nj: 180,
+    fl: 180,
+    wy: 160,
+    or: 200,
+    nm: 185,
+    az: 160,
+    wv: 175,
+    ut: 185
   });
 
   // Function to update yield values
@@ -71,7 +91,7 @@ const Test = () => {
     let totalAcres = 0;
     let acresValue = 0
     sortedArray.forEach(data => {
-     
+  
       const state = data.state.toLowerCase();
       const yieldValue = yieldValues[state];
       const acresValue = data.acres
@@ -87,6 +107,8 @@ const Test = () => {
     const averageYield = totalWeightedYield / totalAcres;
     const avgyield = parseInt(averageYield)
     setCorn(avgyield.toFixed(2))
+
+
     
   };
 

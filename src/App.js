@@ -40,7 +40,7 @@ function App() {
             <Route path="PostList" element={<PostList/>}></Route>         
             <Route path="/BuySell" element={<BuySell/>}/>
             <Route path="/display" element={<Display/>}/>
-            <Route path="/Corn" element={<Test/>}/>
+            <Route path="/Test" element={<Test/>}/>
             <Route path="/Can" element={<Can/>}/>
             
             <Route path="post">

@@ -4,7 +4,7 @@ import {useDispatch} from 'react-redux'
 import "./index.css";
 import Register from "./Register.js";
 import {auth} from './Slices/loginslice'
-
+import {useNavigate} from 'react-router-dom'
 
 
 
@@ -13,11 +13,13 @@ const LOGIN_URL = '/login'
 const Signin = () => {
 const dispatch = useDispatch()
 const userRef = useRef(null);
+const navigate = useNavigate()
 const errRef = useRef();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState('');
+  
   
   useEffect (() => {
     userRef.current.focus()
@@ -32,8 +34,13 @@ const errRef = useRef();
 
   function onSubmit(e) {
     e.preventDefault()
-   console.log(password)
-    dispatch(auth({email,password}))
+    dispatch(auth({email,password})).then(() => {
+    
+      navigate("/")
+       
+    }).catch((error) => {
+      console.error("Authentication Failed: ", error)
+    })
   }
 
   return (

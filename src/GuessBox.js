@@ -3,6 +3,7 @@ import {Button} from 'react-bootstrap'
 import {GuessView} from './styledComponents'
 import {submitCornGuess} from './Slices/CornSlice'
 import {useDispatch} from 'react-redux'
+import { fetchCornEstimate } from './Slices/CornGuessSlice'
 
 const GuessBox = (props) => {
     const dispatch = useDispatch()
@@ -24,6 +25,7 @@ const GuessBox = (props) => {
       const datum = "LetsGOOO"
 
         dispatch(submitCornGuess({grain,yiel, name, state, interest, userId,datum}))
+        
     }
     
 
