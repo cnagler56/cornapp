@@ -8,15 +8,17 @@ import GuessBox from './GuessBox'
 
 const GuessScroll = () => {
 const databack = useSelector(getEstimates)
-
 var data = databack.slice().sort(function(a, b) {
-    return b.date - a.date;
+    return new Date(b.date) - new Date(a.date);
 });    
 
 
   return (
     <EstimateWrapper>
-       <div style={{ overflow: 'scroll', maxHeight: '15em' }}>
+      <div>
+        <h2 className="dark">Yield Estimates</h2>
+      </div>
+       <div style={{ overflow: 'scroll', maxHeight: '14em' }}>
          
              <Form>
               <table className="table table-striped table-hover table-responsive">
@@ -38,8 +40,7 @@ var data = databack.slice().sort(function(a, b) {
                     <td>{item.name}</td>
                     <td>{item.state}</td>
                     <td>{item.interest}</td>
-                    <td>{item.date}</td>
-
+                    <td>{new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</td>
                   </tr>
                   ))}
                 </tbody>

@@ -6,29 +6,32 @@ import {addCornGuess, getCornYields} from './Slices/CornSlice'
 import GuessBox from './GuessBox'
 import GuessScroll from './GuessScroll'
 import {fetchCornEstimate} from './Slices/CornGuessSlice'
+import {getLoggedIn} from './selectors'
 
 const Test = () => {
   const [corn, setCorn] = useState()
   const logged = useSelector(state => state.loggedin)
+  const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
   const yielddata = useSelector(getCornYields);
-  // const acreage = useSelector(state => state.yields)
+  let grain = "Corn"
+ 
   let i = 0
 
 
-
+console.log(logged)
 
  
   const sortedArray = yielddata.slice().sort((a, b) => b.acres - a.acres);
-  // const dispatch = useDispatch();
+
  
   const initialYieldValues = sortedArray.reduce((acc, data) => {
     acc[data.state.toLowerCase()] = data.yield;  
     return acc;
   }, {});
-  console.log(initialYieldValues)
 
-  // const [yieldValues, setYieldValues] = useState(initialYieldValues);
+
+
   
   const [yieldValues, setYieldValues] = useState({
     ia: 201,
@@ -86,10 +89,11 @@ const Test = () => {
 
  
   const onSubmit = () => {
-    const userId = logged.userId
+    // setSubmitted(!submitted)
+    // const userId = logged.userId
     let totalWeightedYield = 0;
     let totalAcres = 0;
-    let acresValue = 0
+    // let acresValue = 0
     sortedArray.forEach(data => {
   
       const state = data.state.toLowerCase();
@@ -107,8 +111,7 @@ const Test = () => {
     const averageYield = totalWeightedYield / totalAcres;
     const avgyield = parseInt(averageYield)
     setCorn(avgyield.toFixed(2))
-
-
+    // setSubmitted(!submitted)
     
   };
 
@@ -163,11 +166,12 @@ const Test = () => {
         </Button>
       </div>
       <div className="scroll">
-        <GuessScroll />
+        <GuessScroll  />
       </div>
       
       <div className="guess">
-      <GuessBox yield={corn} logged={logged}/>
+        console.log(logged)
+      <GuessBox yield={corn} grain = {grain} logged={logged}/>
       </div>
       </main>
       

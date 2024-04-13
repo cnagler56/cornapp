@@ -21,8 +21,8 @@ export const addCornGuess = createAsyncThunk('posts/cornGuess', async ({yieldVal
     return response.data
 })
 
-export const submitCornGuess = createAsyncThunk('cornGuess', async({grain,yiel, name, state, interest, userId,datum}) => {
-    const response = await axios.post("http://localhost:8081/cornGuess",{grain,yiel, name, state, interest, userId,datum})
+export const submitCornGuess = createAsyncThunk('cornGuess', async({grain, date, yiel, name, state, interest, userId}) => {
+    const response = await axios.post("http://localhost:8081/cornGuess",{grain, date, yiel, name, state, interest, userId})
     return response.data
 })
 

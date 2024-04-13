@@ -40,5 +40,5 @@ padding:4em;
 `
 export const EstimateWrapper = styled.div`
 border:2px solid black;
-height:15em;
+height:14em;
 `

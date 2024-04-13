@@ -13,3 +13,4 @@ export const getCornYields = state => state.yields;
 // export const getAcreage = state => state.acres;
 
 export const getEstimates = state => state.cornguess
+export const getLoggedIn = state => state.logged

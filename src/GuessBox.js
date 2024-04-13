@@ -4,16 +4,17 @@ import {GuessView} from './styledComponents'
 import {submitCornGuess} from './Slices/CornSlice'
 import {useDispatch} from 'react-redux'
 import { fetchCornEstimate } from './Slices/CornGuessSlice'
+import GuessScroll from './GuessScroll'
 
 const GuessBox = (props) => {
     const dispatch = useDispatch()
-
+    console.log(props.logged)
     const yiel = props.yield
-    const name = props.logged.name
+     const name = props.logged.name
     const state = props.logged.state
     const interest = props.logged.interest
     const userId = props.logged.userId
-    const grain = "Corn"
+    const grain = props.grain
 
     let content = props.yield ?
     (  <p>Guesstimate: {props.yield} </p>) :
@@ -21,11 +22,11 @@ const GuessBox = (props) => {
 
     const onSubmit = () => {
       const currentDate = new Date()
-      const formatDate = currentDate.toLocaleDateString('en-US',{ month:'long', day: 'numeric', year: 'numeric'})
-      const datum = "LetsGOOO"
-
-        dispatch(submitCornGuess({grain,yiel, name, state, interest, userId,datum}))
-        
+      const year = currentDate.getFullYear();
+      const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
+      const day = String(currentDate.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`;
+        dispatch(submitCornGuess({grain,yiel, name, state, interest, userId, date: formattedDate}))   
     }
     
 

@@ -13,10 +13,10 @@ const Nav = () => {
     <li><Link to= "/PostList">Posts</Link></li>
     <li><Link to= "/user">Users</Link></li>
     {/* <li><Link to= "/post">AddPosts</Link></li> */}
-    <li><Link to="/display">Display</Link></li>
+    {/* <li><Link to="/display">Display</Link></li> */}
     <li><Link to= "/BuySell">Buy/Sell</Link></li>
     <li><Link to= "/Signin">Signin</Link></li>
-    <li><Link to= "/Test">Test</Link></li>
+    {/* <li><Link to= "/Test">Test</Link></li> */}
     {/* <li><Link to= "/Can">CSS</Link></li> */}
 
 </ul>
