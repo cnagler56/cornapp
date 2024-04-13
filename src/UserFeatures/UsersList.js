@@ -3,10 +3,10 @@ import { selectAllUsers } from '../Slices/usersSlice'
 import { Link } from 'react-router-dom'
 
 const UsersList = () => {
-    const users = useSelector(selectAllUsers)
-    
+    const users = useSelector(state => state.users)
+    console.log(users)
   
-    const renderedUsers = users.data.map(user => (
+    const renderedUsers = users.map(user => (
         <li key={user.id}>
             <Link to={`/user/${user.id}`}>{user.firstName} {user.lastName}</Link>
             <div>{user.city}</div>
