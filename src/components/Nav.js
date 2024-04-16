@@ -17,6 +17,7 @@ const Nav = () => {
     <li><Link to= "/BuySell">Buy/Sell</Link></li>
     <li><Link to= "/Signin">Signin</Link></li>
     {/* <li><Link to= "/Test">Test</Link></li> */}
+    <li><Link to= "/Contact">Contact Us</Link></li>
     {/* <li><Link to= "/Can">CSS</Link></li> */}
 
 </ul>

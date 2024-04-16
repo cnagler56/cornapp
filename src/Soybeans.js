@@ -11,7 +11,6 @@ import GuessScroll from './GuessScroll'
 const Soybeans = () => {
    var yielddata = useSelector(getBeanYields)
    const [beans, setBeans] = useState()
-   console.log(yielddata)
    const logged = useSelector(state => state.loggedin)
    console.log(logged)
    let grain = "Beans"
@@ -55,40 +54,40 @@ const Soybeans = () => {
   //  const [va, setVA] = useState(154);
   // const [nj, setNJ] = useState();
   const [yieldValues, setYieldValues] = useState({
-    ia: 201,
-    il: 203,
-    ne: 173,
-    mn: 181,
-    sd: 152,
-    in: 200,
-    nd: 143,
-    wi: 171,
-    oh: 195,
-    al: 168,
-    ar: 180,
+    ia: 58,
+    il: 63,
+    ne: 52,
+    mn: 48,
+    sd: 44,
+    in: 61,
+    nd: 36,
+    wi: 51,
+    oh: 58,
+    al: 43,
+    ar: 54,
     ca: 174,
     co: 124,
-    de: 186,
-    ga: 183,
+    de: 46,
+    ga: 43,
     id: 215,
-    ks: 121,
-    ky: 183,
-    la: 175,
-    md: 171,
-    mi: 171,
-    ms: 182,
-    mo: 147,
-    ny: 168,
-    nc: 143,
-    ok: 144,
-    pa: 154,
-    sc: 150,
-    tn: 177,
-    tx: 130,
-    va: 154,
+    ks: 26,
+    ky: 55,
+    la: 40,
+    md: 47,
+    mi: 46,
+    ms: 56,
+    mo: 48,
+    ny: 51,
+    nc: 39,
+    ok: 26,
+    pa: 47,
+    sc: 39,
+    tn: 51,
+    tx: 25,
+    va: 38,
     wa: 235,
     mt: 180,
-    nj: 180,
+    nj: 43,
     fl: 180,
     wy: 160,
     or: 200,
@@ -135,7 +134,7 @@ const Soybeans = () => {
    return (
    <>
      <main className="container">
-      <div className="corn">
+      <section className="corn">
         <h2 className="dark">Soybeans</h2>
         <div style={{ overflow: 'scroll', maxHeight: '24em' }}>
           
@@ -161,6 +160,7 @@ const Soybeans = () => {
                     <td>
                       <Form.Control
                         style={{ minWidth: '5em' }}
+                        disabled = {!logged.name}
                         placeholder={data.yield}
                         value={yieldValues[data.state.toLowerCase()]} 
                         onChange={e => updateYieldValue(data.state.toLowerCase(), e.target.value)}
@@ -179,16 +179,17 @@ const Soybeans = () => {
         
         </div>
         <Button style={{ margin: '1em' }} type="submit" onClick={onSubmit}>
-          Calculate
+          {(!logged.name) ? "You Must Be Logged In" : "Calculate"}
         </Button>
-      </div>
+      </section>
+      <section className="sideb">
       <div className="scroll">
         <GuessScroll  />
-      </div>
-      
+      </div>     
       <div className="guess">
       <GuessBox yield={beans} grain={grain} logged={logged}/>
       </div>
+      </section>
       </main>
  </>)
 }

@@ -35,10 +35,12 @@ height: 14em;
 margin:auto;
 `
 export const GuessView = styled.div`
-border: 2px solid black;
-padding:4em;
+ margin:auto;
+ padding:9em;
+ height:10vh;
+//  border:2px solid black;
 `
 export const EstimateWrapper = styled.div`
-border:2px solid black;
-height:14em;
+ 
+height:7em;
 `

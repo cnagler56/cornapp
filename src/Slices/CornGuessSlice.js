@@ -6,7 +6,7 @@ const initialState = []
 
 export const fetchCornEstimate = createAsyncThunk('estimates/fetch', async () => {
     const estimate = await axios.get("http://localhost:8081/cornestimates")
-    console.log(estimate.data)
+    
     return estimate.data
 })
 

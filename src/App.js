@@ -10,6 +10,7 @@ import Footer from './components/Footer'
 import Home from './Home'
 import AddPostForm from './PostFeatures/AddPostForm'
 import Layout from './components/Layout'
+import Contact from './Contact'
 
 import Signin from "./Signin"
 import SinglePostPage from "./PostFeatures/SinglePostPage"
@@ -17,7 +18,6 @@ import { Routes, Route, Navigate} from 'react-router-dom';
 import EditPostForm from "./PostFeatures/EditPostForm"
 import UsersList from './UserFeatures/UsersList'
 import UserPage from './UserFeatures/UserPage'
-import Display from "./Display"
 import Test from "./Test"
 
 function App() {
@@ -39,8 +39,8 @@ function App() {
             <Route path="/Soybeans" element={<Soybeans/>}/>
             <Route path="PostList" element={<PostList/>}></Route>         
             <Route path="/BuySell" element={<BuySell/>}/>
-            <Route path="/display" element={<Display/>}/>
             <Route path="/Test" element={<Test/>}/>
+            <Route path="/Contact" element={<Contact/>}/>
             <Route path="/Can" element={<Can/>}/>
             
             <Route path="post">

@@ -4,12 +4,12 @@ import {getEstimates} from './selectors'
 import {useSelector} from 'react-redux'
 import {Form,Button} from 'react-bootstrap'
 import GuessBox from './GuessBox'
-
+import { format } from 'date-fns';
 
 const GuessScroll = () => {
 const databack = useSelector(getEstimates)
 var data = databack.slice().sort(function(a, b) {
-    return new Date(b.date) - new Date(a.date);
+    return b.id - a.id;
 });    
 
 
@@ -40,7 +40,9 @@ var data = databack.slice().sort(function(a, b) {
                     <td>{item.name}</td>
                     <td>{item.state}</td>
                     <td>{item.interest}</td>
-                    <td>{new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</td>
+                    {/* <td>{new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</td> */}
+                    {/* <td>{format(new Date(item.date), 'MM/dd/yyyy')}</td> */}
+                    <td>{item.date}</td>
                   </tr>
                   ))}
                 </tbody>

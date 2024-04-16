@@ -164,14 +164,15 @@ console.log(logged)
         <Button style={{ margin: '1em' }} type="submit" onClick={onSubmit}>
           Calculate
         </Button>
+        <div>
       </div>
       <div className="scroll">
         <GuessScroll  />
       </div>
       
       <div className="guess">
-        console.log(logged)
       <GuessBox yield={corn} grain = {grain} logged={logged}/>
+      </div>
       </div>
       </main>
       

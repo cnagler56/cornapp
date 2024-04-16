@@ -10,6 +10,9 @@ import {ItemWrapper} from '../styledComponents'
 const PostsExcerpts = ({ postId }) => {
     const post = useSelector(state => selectPostById(state, postId))
   
+    // var post = data.slice().sort(function(a, b) {
+    //     return new Date(b.postId) - new Date(a.postId);
+    // });  
 
     return (
         <ItemWrapper>
@@ -25,7 +28,7 @@ const PostsExcerpts = ({ postId }) => {
                 <p>{post.city} {post.state}</p>
                 {/* <TimeAgo timestamp={post.date} /> */}
                 <span>
-                <p>{post.time}</p>
+                <p>{(post.date).slice(0,-14)}</p>
                 <Link to={`post/${post.id}`}>View Post</Link>
                 {/* <Link to={`post/307`}>View Post</Link> */}
                  

@@ -27,21 +27,29 @@ const AddPostForm = () => {
     const onSavePostClicked = () => {
         const name = logged.firstName + " " + logged.lastName
         const city = logged.city
-        console.log(city)
         
-        const time = '12/24/2022'
+        const currentDate = new Date()
+        const year = currentDate.getFullYear();
+        const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
+        const day = String(currentDate.getDate()).padStart(2, '0');
+       
+        const hours = String(currentDate.getHours()).padStart(2, '0');
+        const minutes = String(currentDate.getMinutes()).padStart(2, '0');
+        const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+  
+         
+        const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`
         const state = logged.state
         const userId = logged.userId
         if (canSave) {
             try {
                 setAddRequestStatus('pending')
-                console.log(city)
-                dispatch(addNewPost( {title, content, time, name, city, state, userId}))
+                dispatch(addNewPost( {title, content, name, city, state, userId, date:formattedDate}))
 
                 setTitle('')
                 setContent('')
                 // setUserId('')
-                navigate('/')
+                navigate('/PostList')
             } catch (err) {
                 console.error('Failed to save the post', err)
             } finally {
@@ -85,6 +93,7 @@ const AddPostForm = () => {
                     className="postTitle"
                     value={content}
                     onChange={onContentChanged}
+                    disabled = {!logged.name}
                 />
                 </Form.Group>
                 <Button
@@ -93,7 +102,7 @@ const AddPostForm = () => {
                     onClick={onSavePostClicked}
                     disabled={!canSave} 
                     style={{marginTop:"5px", textAlign:"center", width:"100%"}}
-                >Save Post</Button>
+                >{(!logged.name) ? "You Must Be Logged In" : "Save Post"}</Button>
             </Form>
             </div>
         

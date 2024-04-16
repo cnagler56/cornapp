@@ -11,7 +11,7 @@ import {getLoggedIn} from './selectors'
 const Test = () => {
   const [corn, setCorn] = useState()
   const logged = useSelector(state => state.loggedin)
-  const [submitted, setSubmitted] = useState(false);
+  // const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(true);
   const yielddata = useSelector(getCornYields);
   let grain = "Corn"
@@ -19,7 +19,7 @@ const Test = () => {
   let i = 0
 
 
-console.log(logged)
+ 
 
  
   const sortedArray = yielddata.slice().sort((a, b) => b.acres - a.acres);
@@ -89,7 +89,7 @@ console.log(logged)
 
  
   const onSubmit = () => {
-    // setSubmitted(!submitted)
+    //  setSubmitted(!submitted)
     // const userId = logged.userId
     let totalWeightedYield = 0;
     let totalAcres = 0;
@@ -111,14 +111,19 @@ console.log(logged)
     const averageYield = totalWeightedYield / totalAcres;
     const avgyield = parseInt(averageYield)
     setCorn(avgyield.toFixed(2))
-    // setSubmitted(!submitted)
-    
+    //  setSubmitted(true)
+  
   };
+
+  // useEffect(() => {
+  //   // Reset the submitted state after the component has re-rendered
+  //   setSubmitted(false);
+  // }, [corn]);
 
   return (
     <>
     <main className="container">
-      <div className="corn">
+      <section className="corn">
         <h2 className="dark">Corn</h2>
         <div style={{ overflow: 'scroll', maxHeight: '24em' }}>
           
@@ -144,6 +149,7 @@ console.log(logged)
                     <td>
                       <Form.Control
                         style={{ minWidth: '5em' }}
+                        disabled = {!logged.name}
                         placeholder={data.yield}
                         value={yieldValues[data.state.toLowerCase()]} 
                         onChange={e => updateYieldValue(data.state.toLowerCase(), e.target.value)}
@@ -162,17 +168,19 @@ console.log(logged)
         
         </div>
         <Button style={{ margin: '1em' }} type="submit" onClick={onSubmit}>
-          Calculate
+        {(!logged.name) ? "You Must Be Logged In" : "Calculate"}
         </Button>
-      </div>
+        </section>
+        <section className="sideb">
+      
       <div className="scroll">
         <GuessScroll  />
       </div>
       
       <div className="guess">
-        console.log(logged)
       <GuessBox yield={corn} grain = {grain} logged={logged}/>
       </div>
+     </section>
       </main>
       
     </>
