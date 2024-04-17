@@ -8,6 +8,7 @@ import { format } from 'date-fns';
 
 const GuessScroll = () => {
 const databack = useSelector(getEstimates)
+
 var data = databack.slice().sort(function(a, b) {
     return b.id - a.id;
 });    

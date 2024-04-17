@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Form, Button } from 'react-bootstrap';
-import {addCornGuess, getCornYields} from './Slices/CornSlice'
-// import {getCornYields, getAcreage} from './selectors'
+import { useSelector} from 'react-redux';
+import { Form} from 'react-bootstrap';
+import { getCornYields} from './Slices/CornSlice'
 import GuessBox from './GuessBox'
 import GuessScroll from './GuessScroll'
 import {fetchCornEstimate} from './Slices/CornGuessSlice'
 import {getLoggedIn} from './selectors'
 
-const Test = () => {
+const Corn = () => {
   const [corn, setCorn] = useState()
   const logged = useSelector(state => state.loggedin)
   // const [submitted, setSubmitted] = useState(false);
@@ -17,22 +16,13 @@ const Test = () => {
   let grain = "Corn"
  
   let i = 0
-
-
- 
-
- 
   const sortedArray = yielddata.slice().sort((a, b) => b.acres - a.acres);
 
- 
-  const initialYieldValues = sortedArray.reduce((acc, data) => {
-    acc[data.state.toLowerCase()] = data.yield;  
-    return acc;
-  }, {});
+  // const initialYieldValues = sortedArray.reduce((acc, data) => {
+  //   acc[data.state.toLowerCase()] = data.yield;  
+  //   return acc;
+  // }, {});
 
-
-
-  
   const [yieldValues, setYieldValues] = useState({
     ia: 201,
     il: 203,
@@ -77,7 +67,6 @@ const Test = () => {
     ut: 185
   });
 
-  // Function to update yield values
   const updateYieldValue = (stateName, value) => {
     setYieldValues(prevState => ({
       ...prevState,
@@ -85,40 +74,28 @@ const Test = () => {
     }));
   };
 
-  
-
- 
-  const onSubmit = () => {
-    //  setSubmitted(!submitted)
-    // const userId = logged.userId
+  useEffect(() => {
     let totalWeightedYield = 0;
     let totalAcres = 0;
-    // let acresValue = 0
+
     sortedArray.forEach(data => {
-  
-      const state = data.state.toLowerCase();
-      const yieldValue = yieldValues[state];
-      const acresValue = data.acres
-       const weightedYield = yieldValue * acresValue;
-      
-     
+      // const state = data.state.toLowerCase();
+      const state = data.state ? data.state.toLowerCase() : '';
+      // const yieldValue = yieldValues[state];
+      const yieldValue = state && yieldValues[state] ? yieldValues[state] : 0;
+      const acresValue = data.acres;
+      const weightedYield = yieldValue * acresValue;
 
       totalWeightedYield += weightedYield;
       totalAcres += acresValue;
-      i++
     });
 
-    const averageYield = totalWeightedYield / totalAcres;
-    const avgyield = parseInt(averageYield)
-    setCorn(avgyield.toFixed(2))
-    //  setSubmitted(true)
-  
-  };
-
-  // useEffect(() => {
-  //   // Reset the submitted state after the component has re-rendered
-  //   setSubmitted(false);
-  // }, [corn]);
+    const average = totalWeightedYield / totalAcres;
+    console.log(average)
+   
+    let averageYield = average.toString()
+    setCorn(averageYield.slice(0,-12));
+  }, [yieldValues]);
 
   return (
     <>
@@ -167,9 +144,6 @@ const Test = () => {
            
         
         </div>
-        <Button style={{ margin: '1em' }} type="submit" onClick={onSubmit}>
-        {(!logged.name) ? "You Must Be Logged In" : "Calculate"}
-        </Button>
         </section>
         <section className="sideb">
       
@@ -187,4 +161,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default Corn;

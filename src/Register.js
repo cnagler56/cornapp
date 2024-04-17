@@ -12,8 +12,8 @@ const Register = () => {
   const [email, setEmail] = useState("");  
   const [password, setPassword] = useState("");
   const [city, setCity] = useState('')
-  const [state, setState] = useState("");
-  const [interest, setInterest] = useState("")
+  const [state, setState] = useState("AL");
+  const [interest, setInterest] = useState("Farmer")
  const dispatch= useDispatch()
   const [show, setShow] = useState(false)
   const openModal = () => setShow(true);
@@ -96,7 +96,9 @@ closeModal()
             <Form.Group className="forms">
               <Form.Label>State</Form.Label>
 
-              <Form.Select  style={{border: "1px solid black"}} onChange={(e) => setState(e.target.value)}>
+              <Form.Select
+                value={state}
+                style={{border: "1px solid black"}} onChange={(e) => setState(e.target.value)}>
                           <option value={"AL"}>AL - Alabama</option>
                          <option value={"AK"}>AK - Alaska</option>                        
                          <option value={"AZ"}>AZ - Arizona</option>
@@ -152,7 +154,10 @@ closeModal()
             </Form.Group>
             <Form.Group className="forms">
               <Form.Label>Interest</Form.Label>
-              <Form.Select style={{border: "1px solid black"}} onChange={(e) => setInterest(e.target.value)}>
+              <Form.Select 
+              style={{border: "1px solid black"}} 
+              value={interest}
+              onChange={(e) => setInterest(e.target.value)}>
                          <option value={"Farmer"}>Farmer</option>
                          <option value={"Analyst"}>Analyst</option>
                          <option value={"Trader"}>Trader/Investor</option>

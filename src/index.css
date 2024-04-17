@@ -303,3 +303,8 @@ section {
 .postchild2 {
   width:25%
 }
+
+.history {
+  display: grid;
+  place-items: center;
+}

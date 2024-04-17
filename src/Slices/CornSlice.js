@@ -34,6 +34,17 @@ export const CornSlice = createSlice({
         builder.addCase(fetchCornYield.fulfilled, (state, action) => {
             return action.payload;
         })
+        .addCase(submitCornGuess.fulfilled, (state, action) => {
+            const existingUserIndex = state.findIndex(user => user.userId === action.payload.userId);
+            
+            if (existingUserIndex !== -1) {
+                // Update existing user's yield
+                state[existingUserIndex] = action.payload;
+            } else {
+                // Add new user's yield
+                state.push(action.payload);
+            }
+        });
     }
 })
 export const getCornYields = state => state.yields;

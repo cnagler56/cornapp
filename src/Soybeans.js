@@ -1,8 +1,7 @@
 import {getBeanYields} from './Slices/BeanSlice'
 import {useSelector} from 'react-redux'
-import { Link } from 'react-router-dom'
-import {Form,Button} from 'react-bootstrap'
-import {useState} from 'react'
+import {Form} from 'react-bootstrap'
+import {useState, useEffect} from 'react'
 import {useDispatch} from 'react-redux'
 import {getLoggedIn} from './selectors'
 import GuessBox from './GuessBox'
@@ -12,7 +11,6 @@ const Soybeans = () => {
    var yielddata = useSelector(getBeanYields)
    const [beans, setBeans] = useState()
    const logged = useSelector(state => state.loggedin)
-   console.log(logged)
    let grain = "Beans"
 
    let i = 0
@@ -21,38 +19,7 @@ const Soybeans = () => {
      return b.acres - a.acres;
  });
  const dispatch = useDispatch()
-  //  const [ia, setIA] = useState(0);
-  //  const [il, setIL] = useState(203);
-  //  const [ne, setNE] = useState(173);
-  //  const [mn, setMN] = useState(181);
-  //  const [sd, setSD] = useState(152);
-  //  const [ind, setIN] = useState(200);
-  //  const [nd, setND] = useState(143);
-  //  const [wi, setWI] = useState(171);
-  //  const [oh, setOH] = useState(195);
-  //  const [al, setAL] = useState(168);
-  //  const [ar, setAR] = useState(180);
-  //  const [ca, setCA] = useState(174);
-  //  const [co, setCO] = useState(124);
-  //  const [de, setDE] = useState(186);
-  //  const [ga, setGA] = useState(183);
 
-  //  const [ks, setKS] = useState(121);
-  //  const [ky, setKY] = useState(183);
-  //  const [la, setLA] = useState(175);
-  //  const [md, setMD] = useState(171);
-  //  const [mi, setMI] = useState(171);
-  //  const [ms, setMS] = useState(182);
-  //  const [mo, setMO] = useState(147);
-  //  const [ny, setNY] = useState(168);
-  //  const [nc, setNc] = useState(143);
-  //  const [ok, setOK] = useState(144);
-  //  const [pa, setPA] = useState(154);
-  //  const [sc, setSC] = useState(150);
-  //  const [tn, setTN] = useState(177);
-  //  const [tx, setTX] = useState(130);
-  //  const [va, setVA] = useState(154);
-  // const [nj, setNJ] = useState();
   const [yieldValues, setYieldValues] = useState({
     ia: 58,
     il: 63,
@@ -104,31 +71,25 @@ const Soybeans = () => {
     }));
   };
   
-  const onSubmit = () => {
-   
-    // const userId = logged.userId
+  useEffect(() => {
     let totalWeightedYield = 0;
     let totalAcres = 0;
-    let acresValue = 0
+
     sortedArray.forEach(data => {
-  
       const state = data.state.toLowerCase();
       const yieldValue = yieldValues[state];
-      const acresValue = data.acres
-       const weightedYield = yieldValue * acresValue;
-      
-     
+      const acresValue = data.acres;
+      const weightedYield = yieldValue * acresValue;
 
       totalWeightedYield += weightedYield;
       totalAcres += acresValue;
-      i++
     });
-    const averageYield = totalWeightedYield / totalAcres;
-    const avgyield = parseInt(averageYield)
-    setBeans(avgyield.toFixed(2))
-     
-    
-  };
+
+    const average = totalWeightedYield / totalAcres;
+    console.log(average) 
+    let averageYield = average.toString()
+    setBeans(averageYield.slice(0,-12));
+  }, [yieldValues]);
 
 
    return (
@@ -178,9 +139,6 @@ const Soybeans = () => {
            
         
         </div>
-        <Button style={{ margin: '1em' }} type="submit" onClick={onSubmit}>
-          {(!logged.name) ? "You Must Be Logged In" : "Calculate"}
-        </Button>
       </section>
       <section className="sideb">
       <div className="scroll">

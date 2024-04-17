@@ -4,7 +4,7 @@ import {GuessView} from './styledComponents'
 import {submitCornGuess} from './Slices/CornSlice'
 import {useDispatch} from 'react-redux'
 import { fetchCornEstimate } from './Slices/CornGuessSlice'
- 
+import {useNavigate} from 'react-router-dom'
 
 const GuessBox = (props) => {
     const dispatch = useDispatch()
@@ -14,6 +14,7 @@ const GuessBox = (props) => {
     const interest = props.logged.interest
     const userId = props.logged.userId
     const grain = props.grain
+    const navigate = useNavigate()
 
     let content = props.yield ?
     (  <p>Guesstimate: {props.yield} </p>) :
@@ -23,20 +24,16 @@ const GuessBox = (props) => {
       const currentDate = new Date()
       const year = currentDate.getFullYear();
       const month = String(currentDate.getMonth() + 1).padStart(2, '0'); 
-      const day = String(currentDate.getDate()).padStart(2, '0');
-     
+      const day = String(currentDate.getDate()).padStart(2, '0');    
       const hours = String(currentDate.getHours()).padStart(2, '0');
       const minutes = String(currentDate.getMinutes()).padStart(2, '0');
       const seconds = String(currentDate.getSeconds()).padStart(2, '0');
 
       const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
        
-
-
-
-        dispatch(submitCornGuess({grain,yiel, name, state, interest, userId, date: formattedDate})) 
-        dispatch(fetchCornEstimate()) 
-       
+      dispatch(submitCornGuess({grain,yiel, name, state, interest, userId, date: formattedDate})) 
+        // dispatch(fetchCornEstimate()) 
+        navigate('/History')
        
     }
     

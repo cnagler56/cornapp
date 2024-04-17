@@ -11,7 +11,7 @@ import Home from './Home'
 import AddPostForm from './PostFeatures/AddPostForm'
 import Layout from './components/Layout'
 import Contact from './Contact'
-
+import History from './History'
 import Signin from "./Signin"
 import SinglePostPage from "./PostFeatures/SinglePostPage"
 import { Routes, Route, Navigate} from 'react-router-dom';
@@ -19,8 +19,19 @@ import EditPostForm from "./PostFeatures/EditPostForm"
 import UsersList from './UserFeatures/UsersList'
 import UserPage from './UserFeatures/UserPage'
 import Test from "./Test"
+import {useState, useEffect} from 'react'
 
 function App() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+
+  //   if (token) {
+  //     console.log(token)
+  //     setIsAuthenticated(true);
+  //   }
+  // }, []);
 
   return (
     <div className="outside"
@@ -42,6 +53,7 @@ function App() {
             <Route path="/Test" element={<Test/>}/>
             <Route path="/Contact" element={<Contact/>}/>
             <Route path="/Can" element={<Can/>}/>
+            <Route path="/History" element={<History/>}/>
             
             <Route path="post">
               <Route index element={<AddPostForm />} />

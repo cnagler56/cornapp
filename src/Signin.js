@@ -5,7 +5,7 @@ import "./index.css";
 import Register from "./Register.js";
 import {auth} from './Slices/loginslice'
 import {useNavigate} from 'react-router-dom'
-
+import axios from 'axios'
 
 
 const LOGIN_URL = '/login' 
@@ -19,29 +19,40 @@ const errRef = useRef();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errMsg, setErrMsg] = useState('');
-  
+  // const URL = 'http://localhost:8081'
   
   useEffect (() => {
     userRef.current.focus()
   },[email])
  
 
-
-
-  // useEffect(() => {
-  //   setErrMsg('');
-  // },[email,password])
-
   function onSubmit(e) {
     e.preventDefault()
-    dispatch(auth({email,password})).then(() => {
-    
-      navigate("/")
-       
+
+    dispatch(auth({email,password})).then(() => {   
+      navigate("/")      
     }).catch((error) => {
       console.error("Authentication Failed: ", error)
     })
+    // localStorage.setItem('token', token)
   }
+
+  // const onSubmit = async (e) => {
+  //   e.preventDefault();
+    
+  //   try {
+  //     const response = await axios.post(`${URL}/login?email=${email}&password=${password}`);
+  //     const token = response.data.token;
+
+  //     // Store token securely (e.g., local storage)
+  //     localStorage.setItem('token', token);
+
+  //     // Redirect or update state to indicate user is authenticated
+  //   } catch (error) {
+  //     console.error('Login error:', error);
+  //   }
+  //  };
+
 
   return (
     <>
