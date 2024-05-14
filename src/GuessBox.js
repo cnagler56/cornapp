@@ -18,7 +18,7 @@ const GuessBox = (props) => {
 
     let content = props.yield ?
     (  <p>Guesstimate: {props.yield} </p>) :
-    ( <p>Use the chart to calculate your estimate of the National Corn Yield</p>)
+    ( <p></p>)
 
     const onSubmit = () => {
       const currentDate = new Date()

@@ -1,8 +1,14 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { useState, useEffect} from 'react';
+import {useSelector, useDispatch} from 'react-redux'
+import {handleLogout} from '../App'
 
 
 const Nav = () => {
+   
+  const isLoggedIn = JSON.parse(localStorage.getItem('token')); 
+console.log(isLoggedIn)
   return (
     <nav className="Nav">
        
@@ -13,12 +19,16 @@ const Nav = () => {
     <li><Link to= "/PostList">Posts</Link></li>
     <li><Link to= "/user">Users</Link></li>
     {/* <li><Link to= "/post">AddPosts</Link></li> */}
-    {/* <li><Link to="/display">Display</Link></li> */}
+  
     <li><Link to= "/BuySell">Buy/Sell</Link></li>
-    <li><Link to= "/Signin">Signin</Link></li>
-    {/* <li><Link to= "/Test">Test</Link></li> */}
+    {/* <li><Link to= "/Signin">Signin</Link></li> */}
+    {isLoggedIn ? (
+          <li><Link to= "/Logout">Logout</Link></li>
+        ) : (
+          <li><Link to="/Signin">Signin</Link></li>
+        )}
     <li><Link to= "/Contact">Contact Us</Link></li>
-    {/* <li><Link to= "/Can">CSS</Link></li> */}
+    
 
 </ul>
     </nav>

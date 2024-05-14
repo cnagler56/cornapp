@@ -13,7 +13,7 @@ const History = () => {
         <h1>Guesstimate History</h1>
        <table 
        style={{width:"50vw"}}
-       className="table table-striped table-hover table-responsive">
+       className="table table-dark table-striped">
                 <thead style={{ fontWeight: 'bold' }}>
                   <tr>
                     <td>Crop</td>

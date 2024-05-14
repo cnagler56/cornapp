@@ -18,20 +18,38 @@ import { Routes, Route, Navigate} from 'react-router-dom';
 import EditPostForm from "./PostFeatures/EditPostForm"
 import UsersList from './UserFeatures/UsersList'
 import UserPage from './UserFeatures/UserPage'
-import Test from "./Test"
 import {useState, useEffect} from 'react'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  useEffect(() => {
+    // Check if there's a token in localStorage
+    const token = localStorage.getItem('token');
+    if (token) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+console.log(localStorage)
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    
+    localStorage.removeItem('token');
+  };
+ console.log(isLoggedIn)
   // useEffect(() => {
-  //   const token = localStorage.getItem('token');
+  //   const tokenuser = localStorage.getItem('token');
 
-  //   if (token) {
-  //     console.log(token)
+  //   if (tokenuser) {
+  //     console.log(loggedin)
   //     setIsAuthenticated(true);
   //   }
-  // }, []);
+  // }, [loggedin]);
 
   return (
     <div className="outside"
@@ -45,12 +63,11 @@ function App() {
           <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
             <Route path="Posts" element={<PostList/>}/>
-            <Route path="Signin" element={<Signin/>}/>
+            <Route path="Signin" element={<Signin  onLogin={handleLogin}  />}/>
             { <Route path="Corn" element={<Corn/>}/> }
-            <Route path="/Soybeans" element={<Soybeans/>}/>
+            <Route path="/Soybeans" element={<Soybeans isLoggedIn={isLoggedIn} />}/>
             <Route path="PostList" element={<PostList/>}></Route>         
             <Route path="/BuySell" element={<BuySell/>}/>
-            <Route path="/Test" element={<Test/>}/>
             <Route path="/Contact" element={<Contact/>}/>
             <Route path="/Can" element={<Can/>}/>
             <Route path="/History" element={<History/>}/>
@@ -66,7 +83,7 @@ function App() {
               <Route path=":userId" element={<UserPage />}/>
             </Route>
 
-            <Route path="*" element={<Navigate to="/" replace />}/>
+            <Route path="*" element={<Navigate handleLogout={handleLogout} to="/" replace />}/>
           </Route>
       </Routes>
  

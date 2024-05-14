@@ -30,8 +30,10 @@ font-weight:bold;
 `
 
 export const ItemWrapper = styled.article`
-border:2px solid black;
-height: 14em;
+border:2px solid white;
+background-color:black;
+color:white;
+height: 10em;
 margin:auto;
 `
 export const GuessView = styled.div`

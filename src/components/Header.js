@@ -8,12 +8,18 @@ const capitalizeFirstLetter = (string) => {
 }
 
 const Header = (props) => {
-  const users = useSelector(state => state.loggedin)
+  // const users = useSelector(state => state.loggedin)
+  // const tokenString = localStorage.getItem('token');
+  const tokenObject = JSON.parse(localStorage.getItem('token'));
 
   let welcomeMessage;
-  if (users.firstName && users.lastName) {
-    const capitalizedFirstName = capitalizeFirstLetter(users.firstName);
-    const capitalizedLastName = capitalizeFirstLetter(users.lastName);
+  //  if (users.firstName && users.lastName) {
+   if (tokenObject) {
+     const capitalizedFirstName = capitalizeFirstLetter(tokenObject.firstName);
+   
+     
+     const capitalizedLastName = capitalizeFirstLetter(tokenObject.lastName);
+   
     welcomeMessage = `Welcome ${capitalizedFirstName} ${capitalizedLastName}`;
   } else {
      welcomeMessage = <Link to= "/Signin" style={{color: 'white'}}>Log In You Coward</Link> ;
@@ -22,12 +28,13 @@ const Header = (props) => {
 
   return (
     <header className="Header">
-      <h1>
+      <h1 style={{background:"transparent"}}>
         {props.title}
         </h1>
         <div className='welcome'>
           {welcomeMessage}
           </div>
+         
 
    
         </header>
