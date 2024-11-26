@@ -5,7 +5,7 @@ import yieldsReducer from '../Slices/CornSlice'
 import yieldReducer from '../Slices/BeanSlice'
 import loginReducer from '../Slices/loginslice'
 import cornguessReducer from '../Slices/CornGuessSlice'
-
+import usdaReducer from '../Slices/USDASlice'
 
 export const store = configureStore({
     reducer: {
@@ -15,7 +15,8 @@ export const store = configureStore({
         yield: yieldReducer,
         cornYields: yieldsReducer,
         loggedin: loginReducer,
-        cornguess: cornguessReducer
+        cornguess: cornguessReducer,
+        usda: usdaReducer
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware()
 })
