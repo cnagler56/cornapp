@@ -1,5 +1,7 @@
+
+
 body {
-  background:lightgoldenrodyellow;
+
   margin: 0;
   font-family:   'Oxygen','Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -36,6 +38,7 @@ code {
   margin: 10px;
   color:#fff
 }
+
 
 .Header h1 {
   font-size: 1.5rem;
@@ -145,7 +148,7 @@ code {
 }
 
 article:hover {
-  background-color: #FFDE00;
+  background-color: #47463f;
 }
 
 
@@ -212,11 +215,6 @@ input {
 .postCredit a:focus {
   color: hsla(0, 0%, 0%, 0.75);
 }
-
-.excerpt {
-  font-style: italic;
-}
-
 
 .reactionButton {
   margin: 0 0.25em 0 0;

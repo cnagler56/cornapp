@@ -7,12 +7,13 @@ import {getLoggedIn} from './selectors'
 import GuessBox from './GuessBox'
 import GuessScroll from './GuessScroll'
 
-const Soybeans = () => {
+const Soybeans = ({isLoggedIn}) => {
    var yielddata = useSelector(getBeanYields)
    const [beans, setBeans] = useState()
-   const logged = useSelector(state => state.loggedin)
+  //  const logged = useSelector(state => state.loggedin)
+   const logged = JSON.parse(localStorage.getItem('token'));
    let grain = "Beans"
-
+  console.log(isLoggedIn)
    let i = 0
 
    var sortedArray = yielddata.slice().sort(function(a, b) {
@@ -121,7 +122,7 @@ const Soybeans = () => {
                     <td>
                       <Form.Control
                         style={{ minWidth: '5em' }}
-                        disabled = {!logged.name}
+                        disabled = {!isLoggedIn}
                         placeholder={data.yield}
                         value={yieldValues[data.state.toLowerCase()]} 
                         onChange={e => updateYieldValue(data.state.toLowerCase(), e.target.value)}

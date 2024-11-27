@@ -11,21 +11,22 @@ const Register = () => {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");  
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("")
   const [city, setCity] = useState('')
   const [state, setState] = useState("AL");
   const [interest, setInterest] = useState("Farmer")
+  const [username, setUsername] = useState("")
  const dispatch= useDispatch()
   const [show, setShow] = useState(false)
   const openModal = () => setShow(true);
   const closeModal = () => setShow(false);
   const userRef = useRef(null);
-
+  const role = "USER"
+  const active = true
   
   function onSubmit() {
-    console.log(lastName, city, state)
     const name = firstName +" " + lastName
-    console.log(name)
-dispatch(addUser({firstName, lastName, name, email, password,city, state,interest}));
+dispatch(addUser({firstName, lastName, name, email, username, active,role, password,city, state,interest}));
 closeModal()
   }
 
@@ -74,14 +75,32 @@ closeModal()
                 onChange={(e) => setEmail(e.target.value)}
               ></Form.Control>
             </Form.Group>
+            <Form.Group className="forms">
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                style={{minWidth:"100%" ,border: "1px solid black"}}
+                type="text"
+                className="boxsize"
+                onChange={(e) => setUsername(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
 
             <Form.Group className="forms">
-              <Form.Label>Set Password</Form.Label>
+              <Form.Label>Password</Form.Label>
               <Form.Control
                 style={{minWidth:"100%" ,border: "1px solid black"}}
                 type="password"
                 className="boxsize"
                 onChange={(e) => setPassword(e.target.value)}
+              ></Form.Control>
+            </Form.Group>
+            <Form.Group className="forms">
+              <Form.Label>Confirm Password</Form.Label>
+              <Form.Control
+                style={{minWidth:"100%" ,border: "1px solid black"}}
+                type="password"
+                className="boxsize"
+                onChange={(e) => setConfirmPassword(e.target.value)}
               ></Form.Control>
             </Form.Group>
             <Form.Group className="forms">
@@ -168,7 +187,9 @@ closeModal()
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={onSubmit} className="btn btn-success">
+          <Button onClick={onSubmit} className="btn btn-success"
+          disabled={!password || !username || !email || !firstName || !lastName || password !== confirmPassword}
+          >
             Submit
           </Button>
           <Button

@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import {useDispatch} from 'react-redux'
 import "./index.css";
 import Register from "./Register.js";
-import {auth} from './Slices/loginslice'
+import {auth, getInto} from './Slices/loginslice'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
@@ -16,53 +16,56 @@ const userRef = useRef(null);
 const navigate = useNavigate()
 const errRef = useRef();
 
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
   const [errMsg, setErrMsg] = useState('');
-  // const URL = 'http://localhost:8081'
+   const URL = 'http://localhost:8081'
   
   useEffect (() => {
     userRef.current.focus()
   },[email])
  
 
-  function onSubmit(e) {
-    e.preventDefault()
+  const onSubmit =  (e,{ onLogin } ) => {
+    e.preventDefault();
+    try {
+      dispatch(auth({email,password}))
+      // onLogin();
+      navigate('/')
+    } catch (err) {
+      console.log(err)
+    }
 
-    dispatch(auth({email,password})).then(() => {   
-      navigate("/")      
-    }).catch((error) => {
-      console.error("Authentication Failed: ", error)
-    })
-    // localStorage.setItem('token', token)
   }
-
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
+  // const getIn = async (e) => {
+  //      e.preventDefault();
+  //     console.log(username)
+  //      dispatch(getInto({username,password}))
+  //     navigate('/')
     
-  //   try {
-  //     const response = await axios.post(`${URL}/login?email=${email}&password=${password}`);
-  //     const token = response.data.token;
 
-  //     // Store token securely (e.g., local storage)
-  //     localStorage.setItem('token', token);
-
-  //     // Redirect or update state to indicate user is authenticated
-  //   } catch (error) {
-  //     console.error('Login error:', error);
-  //   }
-  //  };
+  //    };
 
 
   return (
     <>
     <div  className="contain">
 <Form>
+{/* <Form.Group style={{marginBottom: "40px"}}>
+  <Form.Label style={{ fontWeight: "bold", marginTop:"40px" }}>Username</Form.Label>
+  <Form.Control
+   style={{minWidth:"100%"}}  
+  ref={userRef}
+    onChange={(e) => setUsername(e.target.value)}
+    className="boxsize"
+  ></Form.Control>
+</Form.Group> */}
 <Form.Group style={{marginBottom: "40px"}}>
   <Form.Label style={{ fontWeight: "bold", marginTop:"40px" }}>Email</Form.Label>
   <Form.Control
-   style={{minWidth:"100%"}}
-  
+   style={{minWidth:"100%"}}  
   ref={userRef}
     onChange={(e) => setEmail(e.target.value)}
     className="boxsize"
@@ -78,10 +81,19 @@ const errRef = useRef();
   ></Form.Control>
 </Form.Group>
 <div className = "buttons" style={{ padding: "5px", marginTop: "25px" }}>
-  <Button style = {{marginBottom: "25px" }}type="submit" onClick={onSubmit} className="btn btn-success">
+  <Button 
+  disabled={!email || !password}
+  style = {{marginBottom: "25px" }}type="submit" onClick={onSubmit} className="btn btn-success">
     Submit
   </Button>
+  {/* <Button
+   
+   type="submit"
+  onClick={getIn}
+  className="btn btn-danger"
+  >Get In</Button> */}
   <Register></Register>
+  {errMsg && <div>{errMsg}</div>}
 </div>
 </Form>
 </div>

@@ -19,7 +19,6 @@ import { Routes, Route, Navigate} from 'react-router-dom';
 import EditPostForm from "./PostFeatures/EditPostForm"
 import UsersList from './UserFeatures/UsersList'
 import UserPage from './UserFeatures/UserPage'
-import Test from "./Test"
 import {useState, useEffect} from 'react'
 import { fetchUSDAYield } from './Slices/USDASlice';
 import { useDispatch, useSelector } from 'react-redux';
