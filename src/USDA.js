@@ -1,29 +1,33 @@
-import { useSelector } from 'react-redux'
 
-
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchUSDAYield } from './Slices/USDASlice';
 
 const USDA = () => {
-    const usda = useSelector(state => state.usda)
-    console.log('USDA :', usda);
-    console.log('Item:', usda?.[0]);
-    // const renderedUsers = usda?.map(item => (
-    //     <li key={item.id}>
+    const dispatch = useDispatch();
+    const { data, loading, error } = useSelector(state => state.usda);
 
-    //         <div>{item.state}   {item.yield}</div>
-            
-    //     </li>
-       
-    // ))
-    
+    useEffect(() => {
+        dispatch(fetchUSDAYield());
+    }, [dispatch]);
 
+    if (loading) return <p>Loading...</p>;
+    if (error) return <p>Error: {error}</p>;
 
     return (
-        <section className="contain">
+        <section style={{ textAlign: 'center' }}>
             <h2>USDA Data</h2>
-
-            {/* <ul>{renderedUsers}</ul> */}
+            <ul>
+                {data.map((item, index) => (
+                    <li key={index}>
+                        <div>
+                            State: {item.state_name} | Date: {item.load_time.substring(0, 7)} | Yield: {item.Value}
+                        </div>
+                    </li>
+                ))}
+            </ul>
         </section>
-    )
-}
+    );
+};
 
 export default USDA;
