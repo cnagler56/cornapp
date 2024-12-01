@@ -14,14 +14,14 @@ import Contact from './Contact'
 import History from './History'
 import Signin from "./Signin"
 import USDA from "./USDA"
+import Hogs from "./Hogs.js"
 import SinglePostPage from "./PostFeatures/SinglePostPage"
 import { Routes, Route, Navigate} from 'react-router-dom';
 import EditPostForm from "./PostFeatures/EditPostForm"
 import UsersList from './UserFeatures/UsersList'
 import UserPage from './UserFeatures/UserPage'
-import {useState, useEffect} from 'react'
-import { fetchUSDAYield } from './Slices/USDASlice';
-import { useDispatch, useSelector } from 'react-redux';
+import {useState} from 'react'
+
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -68,10 +68,10 @@ function App() {
             <Route path="/Soybeans" element={<Soybeans/>}/>
             <Route path="PostList" element={<PostList/>}></Route>         
             <Route path="/BuySell" element={<BuySell/>}/>
-           s {/* <Route path="/Test" element={<Test/>}/> */}
             <Route path="/Contact" element={<Contact/>}/>
             <Route path="/Can" element={<Can/>}/>
             <Route path="/History" element={<History/>}/>
+            <Route path="/Hogs" element={<Hogs/>}/>
             <Route path="/USDA" element={<USDA/>}/>
             
             <Route path="post">

@@ -1,35 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const USDA = () => {
-    const [grain, setGrain] = useState('');
+const Hogs = () => {
     const [month, setMonth] = useState('');
     const [year, setYear] = useState('');
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const grains = ['CORN', 'SOYBEANS', 'WHEAT'];
+    // Options for dropdowns
+  
     const months = [
         'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN',
         'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC',
     ];
     const years = Array.from({ length: 21 }, (_, i) => `${new Date().getFullYear() - i}`);
 
+    // Function to fetch data based on filters
     const fetchData = async () => {
-        if (!grain || !month || !year) {
-            alert('Please select Grain, Month, and Year');
+        if ( !month || !year) {
+            alert('Please select Month and Year');
             return;
         }
 
         // Change this URL to point to your backend API that proxies the NASS API call
-        const apiUrl = `http://localhost:8081/api/nass-yield-data?grain=${grain}&month=${month}&year=${year}`;
-        console.log(apiUrl)
+        const apiUrl = `http://localhost:8081/api/hogs?month=${month}&year=${year}`;
+
         try {
             setLoading(true);
             setError(null);
             const response = await axios.get(apiUrl);
-            console.log(response);
+
             setData(response.data);
         } catch (err) {
             console.error(err);
@@ -41,18 +42,10 @@ const USDA = () => {
 
     return (
         <section style={{ textAlign: 'center', padding: '1rem' }}>
-            <h2>USDA Data</h2>
+            <h2>Hogs and Pigs</h2>
 
             {/* Dropdowns */}
             <div style={{ marginBottom: '1rem' }}>
-                <select value={grain} onChange={(e) => setGrain(e.target.value)}>
-                    <option value="">Select Grain</option>
-                    {grains.map((g) => (
-                        <option key={g} value={g}>
-                            {g}
-                        </option>
-                    ))}
-                </select>
 
                 <select value={month} onChange={(e) => setMonth(e.target.value)}>
                     <option value="">Select Month</option>
@@ -94,13 +87,10 @@ const USDA = () => {
                         {data.map((item, index) => (
                             <tr key={index}>
                                 <td style={{ border: '1px solid black', padding: '0.5rem' }}>
-                                    {item.state_name || 'N/A'}
+                                    {item.location_desc || 'N/A'}
                                 </td>
                                 <td style={{ border: '1px solid black', padding: '0.5rem' }}>
                                     {item.Value || 'N/A'} {/* Assuming 'Value' is the yield data */}
-                                </td>
-                                <td style={{ border: '1px solid black', padding: '0.5rem' }}>
-                                    {item.acresValue || 'N/A'} {/* Assuming 'Value' is the yield data */}
                                 </td>
                             </tr>
                         ))}
@@ -111,4 +101,4 @@ const USDA = () => {
     );
 };
 
-export default USDA;
+export default Hogs;

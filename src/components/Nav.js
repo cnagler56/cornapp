@@ -28,9 +28,9 @@ const Nav = () => {
           <li><Link to="/Signin">Signin</Link></li>
         )}
     <li><Link to= "/Contact">Contact Us</Link></li>
-    
+    <li><Link to= "/Hogs">Hogs</Link></li>
     <li><Link to= "/USDA">USDA</Link></li>
-    {/* <li><Link to= "/Can">CSS</Link></li> */}
+
 
 </ul>
     </nav>
