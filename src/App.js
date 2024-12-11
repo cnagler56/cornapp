@@ -14,6 +14,8 @@ import Contact from './Contact'
 import History from './History'
 import Signin from "./Signin"
 import USDA from "./USDA"
+import Weather from './Weather.js'
+import Cattle from "./Cattle.js"
 import Hogs from "./Hogs.js"
 import SinglePostPage from "./PostFeatures/SinglePostPage"
 import { Routes, Route, Navigate} from 'react-router-dom';
@@ -71,8 +73,10 @@ function App() {
             <Route path="/Contact" element={<Contact/>}/>
             <Route path="/Can" element={<Can/>}/>
             <Route path="/History" element={<History/>}/>
+            <Route path="/Cattle" element={<Cattle/>}/>
             <Route path="/Hogs" element={<Hogs/>}/>
             <Route path="/USDA" element={<USDA/>}/>
+            <Route path="/Weather" element={<Weather/>}/>
             
             <Route path="post">
               <Route index element={<AddPostForm />} />

@@ -84,17 +84,19 @@ const Hogs = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {data.map((item, index) => (
-                            <tr key={index}>
-                                <td style={{ border: '1px solid black', padding: '0.5rem' }}>
-                                    {item.location_desc || 'N/A'}
-                                </td>
-                                <td style={{ border: '1px solid black', padding: '0.5rem' }}>
-                                    {item.Value || 'N/A'} {/* Assuming 'Value' is the yield data */}
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
+    {data
+        .sort((a, b) => (b.Value || 0) - (a.Value || 0)) // Sort descending by Value
+        .map((item, index) => (
+            <tr key={index}>
+                <td style={{ border: '1px solid black', padding: '0.5rem' }}>
+                    {item.location_desc || 'N/A'}
+                </td>
+                <td style={{ border: '1px solid black', padding: '0.5rem' }}>
+                    {item.Value || 'N/A'}
+                </td>
+            </tr>
+        ))}
+</tbody>
                 </table>
             )}
         </section>

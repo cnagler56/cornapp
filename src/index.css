@@ -306,3 +306,26 @@ section {
   display: grid;
   place-items: center;
 }
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+}
+h1 {
+  text-align:center;
+}
+
+.weatherbox {
+  border: 2px solid black;
+  width: 20vw;
+  text-align: center;
+}
