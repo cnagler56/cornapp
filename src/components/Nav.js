@@ -33,6 +33,7 @@ const Nav = () => {
 
     <li><Link to= "/USDA">USDA</Link></li>
     <li><Link to= "/Weather">Weather</Link></li>
+    <li><Link to= "/NWS">NWS</Link></li>
 
 
 </ul>

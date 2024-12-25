@@ -1,0 +1,16 @@
+.display {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 columns of equal width */
+    grid-auto-flow: column;
+    grid-template-rows: repeat(2, auto);  /* 2 rows, height adjusts to content */
+    gap: 1rem; /* Optional: spacing between items */
+    padding: 1rem;
+
+
+}
+.weatherbox {
+    border: 2px solid black;
+    width: 15vw;
+    height: 15vw;
+    text-align: center;
+  }

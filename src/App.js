@@ -15,6 +15,7 @@ import History from './History'
 import Signin from "./Signin"
 import USDA from "./USDA"
 import Weather from './Weather.js'
+import NWS from './NWS.js'
 import Cattle from "./Cattle.js"
 import Hogs from "./Hogs.js"
 import SinglePostPage from "./PostFeatures/SinglePostPage"
@@ -77,6 +78,7 @@ function App() {
             <Route path="/Hogs" element={<Hogs/>}/>
             <Route path="/USDA" element={<USDA/>}/>
             <Route path="/Weather" element={<Weather/>}/>
+            <Route path="/NWS" element={<NWS/>}/>
             
             <Route path="post">
               <Route index element={<AddPostForm />} />
