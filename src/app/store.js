@@ -5,11 +5,13 @@ import yieldsReducer from '../Slices/CornSlice'
 import yieldReducer from '../Slices/BeanSlice'
 import loginReducer from '../Slices/loginslice'
 import cornguessReducer from '../Slices/CornGuessSlice'
+import authReducer from '../Slices/loginslice'
 import usdaReducer from '../Slices/USDASlice'
 
 export const store = configureStore({
     reducer: {
         users: usersReducer,
+        auth: authReducer,
         posts: postsReducer,
         yields: yieldsReducer,
         yield: yieldReducer,

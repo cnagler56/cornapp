@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTint, faSun, faCloud, faWind } from '@fortawesome/free-solid-svg-icons';
 import './Weather.css';
 
 const Weather = () => {
@@ -13,10 +15,9 @@ const Weather = () => {
                 const cachedWeather = localStorage.getItem('weatherData');
                 if (cachedWeather) {
                     const { data, timestamp } = JSON.parse(cachedWeather);
-                    const oneHour = 60 * 60 * 1000; // Cache expiration (1 hour)
-                    const now = new Date().getTime();
+                    const oneHour = 60 * 60 * 12000; 
     
-                    if (now - timestamp < oneHour) {
+                    if (Date.now() - timestamp < oneHour) {
                         setWeatherData(data);
                         setLoading(false);
                         return;
@@ -47,9 +48,9 @@ const Weather = () => {
 
     const getBackgroundColor = (temperature) => {
         if (temperature < 10) {
-            return '#003f5c'; // Dark Blue
+            return '#023E8A'; // Dark Blue
         } else if (temperature < 20) {
-            return '#0000FF'; // Medium Dark Blue
+            return '#0077B6'; // Medium Dark Blue
         } else if (temperature < 30) {
             return '#0096FF'; // Medium Blue
         } else if (temperature < 40) {
@@ -71,6 +72,13 @@ const Weather = () => {
         }
     };
 
+    const getIconColor = (precipitationChance) => {
+        if (precipitationChance > 80) return 'darkblue';
+        if (precipitationChance > 50) return 'blue';
+        if (precipitationChance > 20) return 'lightblue';
+        return 'white';
+      };
+
     if (loading) return <p>Loading weather data...</p>;
     if (error) return <p>{error}</p>;
 
@@ -81,7 +89,9 @@ const Weather = () => {
                 <p>No weather data available.</p>
             ) : (
                 <div className="display">
-                    {weatherData.map((period) => {
+                    {weatherData
+                    .filter((period) => !period.name.includes('Night'))
+                    .map((period) => {
                         // Calculate background color dynamically
                         const backgroundColor = getBackgroundColor(period.temperature);
 
@@ -89,13 +99,27 @@ const Weather = () => {
                             <div
                                 className="weatherbox"
                                 key={period.dayForecast}
-                                style={{ backgroundColor }} // Apply the background color
+                                style={{ backgroundColor }} 
                             >
-                                <h3>{`${period.name}`}</h3>
-                                <p><strong>Temperature:</strong> {period.temperature} °F</p>
-                                <p><strong>Precipitation Chance:</strong> {period.precipitationChance ?? 'N/A'}%</p>
-                                <p><strong>Wind:</strong> {period.windSpeed} {period.windDirection}</p>
-                                <p><strong>Forecast:</strong> {period.shortForecast}</p>
+                                <span>
+                                <p className="weather-item1">
+                                {period.name}</p>
+                                <p className="weather-item"> {period.temperature} °F</p>
+                                <p className="weather-item">
+                                {period.precipitationChance ?? 'N/A'}%
+                  {period.precipitationChance > 0 && (
+                    <FontAwesomeIcon
+                      icon={faTint}
+                      style={{  color: getIconColor(period.precipitationChance), marginLeft: '5px' }}
+                    />
+                  )}
+                </p>
+                                <p className="weather-item2"><FontAwesomeIcon icon={faWind} style={{ color: "blue", marginRight: "5px" }} />
+                                 {period.windSpeed} {period.windDirection}</p>
+                                <p className="weather-item3"><FontAwesomeIcon icon={faSun} style={{ color: "gold", marginRight: "5px" }} />
+                                 {period.shortForecast}</p>
+                                </span>
+
                             </div>
                         );
                     })}

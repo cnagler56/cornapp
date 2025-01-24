@@ -1,59 +1,63 @@
-import {createSlice, createAsyncThunk, createEntityAdapter} from '@reduxjs/toolkit';
-import axios from 'axios'
-// import {useSignIn} from 'react-auth-kit'
- 
 
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
-// const isAuthenticated= {}
-const URL = 'http://localhost:8081'
+const URL = 'http://localhost:8081';
 
+// AsyncThunk for authentication
+export const auth = createAsyncThunk(
+  'auth/login',
+  async ({ email, password }, thunkAPI) => {
+    try {
+      const response = await axios.post(`${URL}/login`, { email, password });
+      const { token, user } = response.data;
 
-export const loginAdapter = createEntityAdapter()
+      // Save token and user details to localStorage
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
 
- export const loginSelector = loginAdapter.getSelectors(state => state.loggedin)
- 
- export const auth = createAsyncThunk('users/auth', async ({email, password}, thunkAPI) => {
-   try {
-  const loggedin = await axios.get(`${URL}/login?email=${email}&password=${password}`);
-    // const loggedin = await axios.get(`${URL}/login?email=3&password=3`);
-    const token = await loggedin.data
-    // localStorage.setItem('token', JSON.stringify(token))
-     
-    return token;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+      return { token, user };
+    } catch (error) {
+      const errorMsg = error.response?.data?.message || 'You suck!';
+      return thunkAPI.rejectWithValue(errorMsg);
+    }
   }
-         
-})
+);
 
-
-  // export const getInto =  createAsyncThunk('users/getIn', async({username, password})  => {
-  //   const token = await axios.get("http://localhost:8081/getIn",{username, password})
-  //   console.log(token)
-  //   return token.data
-  // })     
-
-
-export const loginslice = createSlice({
-    name: 'loggedIn',
-    initialState: loginAdapter.getInitialState(),
-    reducers: {
-        loggedin: (state, action) => {
-            state.loggedin.push(action.payload)
-           
-        }
-        
+// Create the auth slice
+const loginslice = createSlice({
+  name: 'auth',
+  initialState: {
+    token: localStorage.getItem('token') || null,
+    user: JSON.parse(localStorage.getItem('user')) || null,
+    status: 'idle',
+    error: null,
+  },
+  reducers: {
+    logout: (state) => {
+      state.token = null;
+      state.user = null;
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
     },
-    extraReducers(builder) {
-        builder.addCase(auth.fulfilled, (state, action) => {
-           return action.payload
-        })
-    }    
-     })
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(auth.pending, (state) => {
+        state.status = 'loading';
+        state.error = null;
+      })
+      .addCase(auth.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.token = action.payload.token;
+        state.user = action.payload.user;
+      })
+      .addCase(auth.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.payload;
+      });
+  },
+});
 
-
-
-
-  export const {loggedIn} = loginslice.actions
-     
+export const { logout } = loginslice.actions;
 export default loginslice.reducer;

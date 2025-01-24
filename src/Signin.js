@@ -1,104 +1,76 @@
-import { Form, Button } from "react-bootstrap";
-import { useState, useRef, useEffect } from "react";
-import {useDispatch} from 'react-redux'
-import "./index.css";
-import Register from "./Register.js";
-import {auth, getInto} from './Slices/loginslice'
-import {useNavigate} from 'react-router-dom'
-import axios from 'axios'
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { useRef, useState, useEffect } from 'react';
+import {Form, Button} from 'react-bootstrap'
+import {auth} from './Slices/loginslice'
+import Register from './Register.js'
 
-
-const LOGIN_URL = '/login' 
 
 const Signin = () => {
-const dispatch = useDispatch()
-const userRef = useRef(null);
-const navigate = useNavigate()
-const errRef = useRef();
-
-
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userRef = useRef();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [errMsg, setErrMsg] = useState('');
-   const URL = 'http://localhost:8081'
-  
-  useEffect (() => {
-    userRef.current.focus()
-  },[email])
+
+  const { status, error, user } = useSelector((state) => state.auth);
  
 
-  const onSubmit =  (e,{ onLogin } ) => {
+  useEffect(() => {
+    userRef.current?.focus();
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      dispatch(auth({email,password}))
-      // onLogin();
-      navigate('/')
+      const result = await dispatch(auth({ email, password })).unwrap();
+      if (result.token) navigate('/');
     } catch (err) {
-      console.log(err)
+      setErrMsg(err || 'Login failed.');
     }
-
-  }
-  // const getIn = async (e) => {
-  //      e.preventDefault();
-  //     console.log(username)
-  //      dispatch(getInto({username,password}))
-  //     navigate('/')
-    
-
-  //    };
-
+  };
 
   return (
-    <>
-    <div  className="contain">
-<Form>
-{/* <Form.Group style={{marginBottom: "40px"}}>
-  <Form.Label style={{ fontWeight: "bold", marginTop:"40px" }}>Username</Form.Label>
-  <Form.Control
-   style={{minWidth:"100%"}}  
-  ref={userRef}
-    onChange={(e) => setUsername(e.target.value)}
-    className="boxsize"
-  ></Form.Control>
-</Form.Group> */}
-<Form.Group style={{marginBottom: "40px"}}>
-  <Form.Label style={{ fontWeight: "bold", marginTop:"40px" }}>Email</Form.Label>
-  <Form.Control
-   style={{minWidth:"100%"}}  
-  ref={userRef}
-    onChange={(e) => setEmail(e.target.value)}
-    className="boxsize"
-  ></Form.Control>
-</Form.Group>
-<Form.Group>
-  <Form.Label style={{ fontWeight: "bold"}}>Password</Form.Label>
-  <Form.Control
-    className="boxsize"
-    style={{minWidth:"100%"}}
-    type="password"
-    onChange={(e) => setPassword(e.target.value)}
-  ></Form.Control>
-</Form.Group>
-<div className = "buttons" style={{ padding: "5px", marginTop: "25px" }}>
-  <Button 
-  disabled={!email || !password}
-  style = {{marginBottom: "25px" }}type="submit" onClick={onSubmit} className="btn btn-success">
-    Submit
-  </Button>
-  {/* <Button
-   
-   type="submit"
-  onClick={getIn}
-  className="btn btn-danger"
-  >Get In</Button> */}
-  <Register></Register>
-  {errMsg && <div>{errMsg}</div>}
-</div>
-</Form>
-</div>
-</>
-);
+    <div className="contain">
+      <Form onSubmit={handleSubmit}>
+        <Form.Group style={{ marginBottom: '40px' }}>
+          <Form.Label style={{ fontWeight: 'bold', marginTop: '40px' }}>Email</Form.Label>
+          <Form.Control
+            style={{ minWidth: '100%' }}
+            ref={userRef}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="boxsize"
+          />
+        </Form.Group>
+        <Form.Group>
+          <Form.Label style={{ fontWeight: 'bold' }}>Password</Form.Label>
+          <Form.Control
+            className="boxsize"
+            style={{ minWidth: '100%' }}
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </Form.Group>
+        <div className="buttons" style={{ padding: '5px', marginTop: '25px' }}>
+          <Button
+            disabled={!email || !password || status === 'loading'}
+            style={{ marginBottom: '25px' }}
+            type="submit"
+            className="btn btn-success"
+          >
+            {status === 'loading' ? 'Logging in...' : 'Submit'}
+          </Button>
+          <Register></Register>
+        </div>
+        {errMsg && <div style={{ color: 'red' }}>{errMsg}</div>}
+        {error && <div style={{ color: 'red' }}>{error}</div>}
+        {user && <div>Welcome, {user.name}!</div>}
+      </Form>
+    </div>
+  );
 };
 
 export default Signin;

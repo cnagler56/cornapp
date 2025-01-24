@@ -1,16 +1,40 @@
 .display {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 5 columns of equal width */
-    grid-auto-flow: column;
-    grid-template-rows: repeat(2, auto);  /* 2 rows, height adjusts to content */
-    gap: 1rem; /* Optional: spacing between items */
-    padding: 1rem;
+    gap: 2px;
+    margin: 10px;
 
 
 }
 .weatherbox {
+    display: inline-block;
+    margin-left: 0px;
+    padding:0;
     border: 2px solid black;
-    width: 15vw;
-    height: 15vw;
-    text-align: center;
+    width: 50vw;
+    height: 2vw;
+    color: white
+     
+  }
+  .weather-item {
+    width: 100px;
+    padding: 0;
+    text-align: left;
+  }
+
+  .weather-item1 {
+    width: 150px;
+    padding: 0;
+    margin-left: 5px;
+    text-align: left;
+  }
+
+  .weather-item2 {
+    width: 225px;
+    padding: 0;
+    text-align: left;
+  }
+  .weather-item3 {
+    width: 275px;
+    padding: 0;
+    text-align: left;
   }
