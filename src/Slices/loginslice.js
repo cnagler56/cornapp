@@ -1,43 +1,49 @@
-
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 const URL = 'http://localhost:8081';
 
-// AsyncThunk for authentication
 export const auth = createAsyncThunk(
   'auth/login',
   async ({ email, password }, thunkAPI) => {
     try {
-      const response = await axios.post(`${URL}/login`, { email, password });
-      const { token, user } = response.data;
+      const response = await axios.post(`${URL}/login`, { email, password }, { withCredentials: true });
 
-      // Save token and user details to localStorage
-      localStorage.setItem('token', token);
+      const user = response.data;
+      
+      
       localStorage.setItem('user', JSON.stringify(user));
 
-      return { token, user };
+
+      return { user };
     } catch (error) {
-      const errorMsg = error.response?.data?.message || 'You suck!';
+      const errorMsg = error.response?.data?.message || 'An error occurred. Please try again.';
       return thunkAPI.rejectWithValue(errorMsg);
     }
   }
 );
 
-// Create the auth slice
+
+const getUserFromLocalStorage = () => {
+  const userFromStorage = localStorage.getItem('user');
+  try {
+    return userFromStorage ? JSON.parse(userFromStorage) : null;
+  } catch (error) {
+    console.error('Error parsing user data from localStorage:', error);
+    return null;
+  }
+};
+
 const loginslice = createSlice({
   name: 'auth',
   initialState: {
-    token: localStorage.getItem('token') || null,
-    user: JSON.parse(localStorage.getItem('user')) || null,
+    user: getUserFromLocalStorage(), 
     status: 'idle',
     error: null,
   },
   reducers: {
     logout: (state) => {
-      state.token = null;
       state.user = null;
-      localStorage.removeItem('token');
       localStorage.removeItem('user');
     },
   },
@@ -49,8 +55,8 @@ const loginslice = createSlice({
       })
       .addCase(auth.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.token = action.payload.token;
         state.user = action.payload.user;
+        localStorage.setItem('user', JSON.stringify(action.payload.user));
       })
       .addCase(auth.rejected, (state, action) => {
         state.status = 'failed';

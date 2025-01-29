@@ -9,7 +9,7 @@ const initialState = []
 
 
 export const fetchCornYield = createAsyncThunk('yields/fetchCornYield', async () => {
-    const response = await axios.get(USERS_URL);
+    const response = await axios.get(USERS_URL, { withCredentials: true });
     return response.data
 })
 
@@ -17,12 +17,14 @@ export const fetchCornYield = createAsyncThunk('yields/fetchCornYield', async ()
 
 export const addCornGuess = createAsyncThunk('posts/cornGuess', async ({yieldValues, userId}) => {
     // const response = await axios.post(USERS_GUESS, yieldValues)
-    const response = await axios.post({yieldValues, userId})
+    const response = await axios.post(USERS_GUESS, { yieldValues, userId }, { withCredentials: true });
+    // const response = await axios.post({yieldValues, userId})
     return response.data
 })
 
 export const submitCornGuess = createAsyncThunk('cornGuess', async({grain, date, yiel, name, state, interest, userId}) => {
-    const response = await axios.post("http://localhost:8081/cornGuess",{grain, date, yiel, name, state, interest, userId})
+    // const response = await axios.post("http://localhost:8081/cornGuess",{grain, date, yiel, name, state, interest, userId})
+    const response = await axios.post("http://localhost:8081/cornGuess", { grain, date, yiel, name, state, interest, userId }, { withCredentials: true });
     return response.data
 })
 

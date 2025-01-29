@@ -1,26 +1,46 @@
 import {createSlice, createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios'
 
-const initialState = []
+const URL = 'http://localhost:8081';
 
+export const fetchCornEstimate = createAsyncThunk(
+  'cornguess/fetchCornEstimate',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(`${URL}/cornestimates`, {
+        withCredentials: true,  
+      });
+      return response.data;  
+    } catch (error) {
+      return thunkAPI.rejectWithValue('Error fetching corn estimate');
+    }
+  }
+);
 
-export const fetchCornEstimate = createAsyncThunk('estimates/fetch', async () => {
-    const estimate = await axios.get("http://localhost:8081/cornestimates")
-    
-    return estimate.data
-})
-
-
+const initialState = {
+  estimates: [],  
+  status: 'idle',  
+  error: null,  
+};
 
 export const CornGuessSlice = createSlice({
-    name: 'cornguess',
-    initialState,
-    reducers: { },
-    extraReducers(builder) {
-        builder.addCase(fetchCornEstimate.fulfilled, (state, action) => {
-            return action.payload;
-        })
-    }
-})
+  name: 'cornguess',
+  initialState,
+  reducers: {},  
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchCornEstimate.pending, (state) => {
+        state.status = 'loading';  
+      })
+      .addCase(fetchCornEstimate.fulfilled, (state, action) => {
+        state.status = 'succeeded';  
+        state.estimates = action.payload;  
+      })
+      .addCase(fetchCornEstimate.rejected, (state, action) => {
+        state.status = 'failed';  
+        state.error = action.payload;  
+      });
+  },
+});
 
 export default CornGuessSlice.reducer;

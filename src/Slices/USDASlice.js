@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const fetchUSDAYield = createAsyncThunk('usda/fetchUSDAYield', async () => {
-    const response = await axios.get('http://localhost:8081/fetch-corn-yield');
+    const response = await axios.get('http://localhost:8081/fetch-corn-yield',{withCredentials: true});
 
     const modifiedData = response.data.map(item => ({
         ...item,

@@ -25,8 +25,8 @@ const AddPostForm = () => {
   
 
     const onSavePostClicked = () => {
-        const name = logged.firstName + " " + logged.lastName
-        const city = logged.city
+        const name = logged.user.firstName + " " + logged.user.lastName
+        const city = logged.user.city
         
         const currentDate = new Date()
         const year = currentDate.getFullYear();
@@ -39,10 +39,12 @@ const AddPostForm = () => {
   
          
         const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`
-        const state = logged.state
-        const userId = logged.userId
-        if (canSave) {
+        const state = logged.user.state
+        const userId = logged.user.userId
+        console.log("1")
+        if (true) {
             try {
+                console.log("2")
                 setAddRequestStatus('pending')
                 dispatch(addNewPost( {title, content, name, city, state, userId, date:formattedDate}))
 
@@ -93,16 +95,16 @@ const AddPostForm = () => {
                     className="postTitle"
                     value={content}
                     onChange={onContentChanged}
-                    disabled = {!logged.name}
+                    disabled = {logged.user.name}
                 />
                 </Form.Group>
                 <Button
               
                     type="button"
                     onClick={onSavePostClicked}
-                    disabled={!canSave} 
+                    // disabled={!canSave} 
                     style={{marginTop:"5px", textAlign:"center", width:"100%"}}
-                >{(!logged.name) ? "You Must Be Logged In" : "Save Post"}</Button>
+                >{(logged.user.name) ? "You Must Be Logged In" : "Save Post"}</Button>
             </Form>
             </div>
         

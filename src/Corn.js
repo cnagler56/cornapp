@@ -126,7 +126,7 @@ const Corn = () => {
                     <td>
                       <Form.Control
                         style={{ minWidth: '5em' }}
-                        disabled = {!logged.name}
+                        // disabled = {!logged.name}
                         placeholder={data.yield}
                         value={yieldValues[data.state.toLowerCase()]} 
                         onChange={e => updateYieldValue(data.state.toLowerCase(), e.target.value)}
@@ -148,7 +148,7 @@ const Corn = () => {
         <section className="sideb">
       
       <div className="scroll">
-        <GuessScroll  />
+        <GuessScroll/>
       </div>
       
       <div className="guess">

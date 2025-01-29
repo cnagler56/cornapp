@@ -7,7 +7,8 @@ import {handleLogout} from '../App'
 
 const Nav = () => {
    
-  const isLoggedIn = JSON.parse(localStorage.getItem('token')); 
+  const isLoggedIn = JSON.parse(localStorage.getItem('user'));
+ 
  
   return (
     <nav className="Nav">

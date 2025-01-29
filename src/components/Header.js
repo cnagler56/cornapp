@@ -8,9 +8,7 @@ const capitalizeFirstLetter = (string) => {
 }
 
 const Header = (props) => {
-  // const users = useSelector(state => state.loggedin)
-  // const tokenString = localStorage.getItem('token');
-  const tokenObject = JSON.parse(localStorage.getItem('token'));
+  const tokenObject = JSON.parse(localStorage.getItem('user'));
 
   let welcomeMessage;
   //  if (users.firstName && users.lastName) {

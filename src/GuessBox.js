@@ -9,7 +9,7 @@ import {useNavigate} from 'react-router-dom'
 const GuessBox = (props) => {
     const dispatch = useDispatch()
     const yiel = props.yield
-     const name = props.logged.name
+    const name = props.logged.name
     const state = props.logged.state
     const interest = props.logged.interest
     const userId = props.logged.userId
@@ -32,7 +32,7 @@ const GuessBox = (props) => {
       const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
        
       dispatch(submitCornGuess({grain,yiel, name, state, interest, userId, date: formattedDate})) 
-        // dispatch(fetchCornEstimate()) 
+        dispatch(fetchCornEstimate()) 
         navigate('/History')
        
     }
@@ -41,13 +41,15 @@ const GuessBox = (props) => {
   return (<>
   <GuessView>
     <div>
-      <p>""</p>
+      <p></p>
       {content}
     </div>
     <div>
-{/* <Button disabled={!props.yield || !name} onClick={onSubmit}>Submit My Estimate</Button> */}
-<Button disabled={!props.yield || !name} onClick={onSubmit}>{(!props.yield) ? "Calculate your Estimate" :
-(!name) ? "Please Log In" : "Submit My Estimate"}</Button>
+
+<Button 
+// disabled={!props.yield || !name} 
+onClick={onSubmit}>{(!props.yield) ? "Calculate your Estimate" :
+(state) ? "Please Log In" : "Submit My Estimate"}</Button>
 </div>
 </GuessView>
     </>

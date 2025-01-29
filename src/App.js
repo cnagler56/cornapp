@@ -13,6 +13,7 @@ import Layout from './components/Layout'
 import Contact from './Contact'
 import History from './History'
 import Signin from "./Signin"
+import Logout from "./Logout"
 import USDA from "./USDA"
 import Weather from './Weather.js'
 import NWS from './NWS.js'
@@ -67,6 +68,7 @@ function App() {
           <Route index element={<Home />} />
             <Route path="Posts" element={<PostList/>}/>
             <Route path="Signin" element={<Signin/>}/>
+            <Route path="Logout" element={<Logout/>}/>
             { <Route path="Corn" element={<Corn/>}/> }
             <Route path="/Soybeans" element={<Soybeans/>}/>
             <Route path="PostList" element={<PostList/>}></Route>         

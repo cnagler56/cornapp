@@ -25,7 +25,8 @@ const Weather = () => {
                 }
     
                 const response = await axios.get('/fetch-weather', {
-                    params: { gridID: 'MPX', gridX: '107', gridY: '71' }
+                    params: { gridID: 'MPX', gridX: '107', gridY: '71' },
+                    withCredentials: true
                 });
     
                 const weatherData = response.data;
@@ -48,27 +49,27 @@ const Weather = () => {
 
     const getBackgroundColor = (temperature) => {
         if (temperature < 10) {
-            return '#023E8A'; // Dark Blue
+            return '#023E8A';  
         } else if (temperature < 20) {
-            return '#0077B6'; // Medium Dark Blue
+            return '#0077B6';  
         } else if (temperature < 30) {
-            return '#0096FF'; // Medium Blue
+            return '#0096FF';  
         } else if (temperature < 40) {
-            return '#ADD8E6'; // Light Blue
+            return '#ADD8E6';  
         } else if (temperature < 50) {
             return '#7DF9FF'; // Very Light Blue
         } else if (temperature < 60) {
-            return '#f95d6a'; // Neutral (Transition)
+            return '#f95d6a';  
         } else if (temperature < 70) {
-            return '#ff7c43'; // Light Red
+            return '#ff7c43';  
         } else if (temperature < 80) {
-            return '#ffa600'; // Medium Light Red
+            return '#ffa600';  
         } else if (temperature < 90) {
-            return '#f44747'; // Medium Red
+            return '#f44747';  
         } else if (temperature < 100) {
-            return '#e03c28'; // Dark Red
+            return '#e03c28';  
         } else {
-            return '#990000'; // Very Dark Red
+            return '#990000';  
         }
     };
 
@@ -92,7 +93,6 @@ const Weather = () => {
                     {weatherData
                     .filter((period) => !period.name.includes('Night'))
                     .map((period) => {
-                        // Calculate background color dynamically
                         const backgroundColor = getBackgroundColor(period.temperature);
 
                         return (
