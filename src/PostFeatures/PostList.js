@@ -33,7 +33,6 @@ const PostList = () => {
 <PostWrapper className='postchild'>
 <Filter></Filter>
     <Box>
-
       <section style={{overflow: "scroll"}}>
           {content}
       </section>

@@ -3,36 +3,12 @@ import { EstimateWrapper } from './styledComponents';
 import { getEstimates } from './selectors';
 import { useSelector } from 'react-redux';
 import { Form } from 'react-bootstrap';
+import moment from 'moment';
 
 const GuessScroll = () => {
-  // Always call `useSelector` unconditionally
   const databack = useSelector(getEstimates);
 
-  // Provide fallback data in case `databack` is empty or undefined
-  const fallbackData = [
-    {
-      id: 1,
-      grain: 'Corn',
-      yiel: '150',
-      name: 'John Doe',
-      state: 'Iowa',
-      interest: 'Student',
-      date: '2025-01-01',
-    },
-    {
-      id: 2,
-      grain: 'Soybeans',
-      yiel: '50',
-      name: 'Jane Smith',
-      state: 'Illinois',
-      interest: 'Farmer',
-      date: '2025-01-15',
-    },
-  ];
-
-  // Use fallback data if `databack` is empty or undefined
-  const data = (databack && databack.length > 0 ? databack : fallbackData).slice().sort((a, b) => b.id - a.id);
-
+  const data = (databack && databack.length > 0 ? databack : []);
   return (
     <EstimateWrapper>
       <div>
@@ -52,14 +28,17 @@ const GuessScroll = () => {
               </tr>
             </thead>
             <tbody>
-              {data.map((item) => (
+              {data
+                      .slice() 
+                      .sort((a, b) => moment(b.date, "YYYY-MM-DD HH:mm:ss").valueOf() - moment(a.date, "YYYY-MM-DD HH:mm:ss").valueOf())
+                      .map((item) => (
                 <tr key={item.id}>
                   <td>{item.grain}</td>
                   <td>{item.yiel}</td>
                   <td>{item.name}</td>
                   <td>{item.state}</td>
                   <td>{item.interest}</td>
-                  <td>{item.date}</td>
+                  <td>{moment(item.date, "YYYY-MM-DD HH:mm:ss").format("MMMM DD, YYYY")}</td>
                 </tr>
               ))}
             </tbody>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const USDA = () => {
@@ -22,15 +22,13 @@ const USDA = () => {
             return;
         }
 
-        // Change this URL to point to your backend API that proxies the NASS API call
         const apiUrl = `http://localhost:8081/api/nass-yield-data?grain=${grain}&month=${month}&year=${year}`;
-        console.log(apiUrl)
         try {
             setLoading(true);
             setError(null);
             const response = await axios.get(apiUrl);
-            console.log(response);
             setData(response.data);
+            console.log(response.data)
         } catch (err) {
             console.error(err);
             setError('Failed to fetch data');
@@ -42,8 +40,6 @@ const USDA = () => {
     return (
         <section style={{ textAlign: 'center', padding: '1rem' }}>
             <h2>USDA Data</h2>
-
-            {/* Dropdowns */}
             <div style={{ marginBottom: '1rem' }}>
                 <select value={grain} onChange={(e) => setGrain(e.target.value)}>
                     <option value="">Select Grain</option>
@@ -88,7 +84,7 @@ const USDA = () => {
                         <tr>
                             <th style={{ border: '1px solid black', padding: '0.5rem' }}>State</th>
                             <th style={{ border: '1px solid black', padding: '0.5rem' }}>Yield</th>
-                            <th style={{ border: '1px solid black', padding: '0.5rem' }}>Acres</th>
+                            {/* <th style={{ border: '1px solid black', padding: '0.5rem' }}>Acres</th> */}
                         </tr>
                     </thead>
                     <tbody>
@@ -98,11 +94,12 @@ const USDA = () => {
                                     {item.state_name || 'N/A'}
                                 </td>
                                 <td style={{ border: '1px solid black', padding: '0.5rem' }}>
-                                    {item.Value || 'N/A'} {/* Assuming 'Value' is the yield data */}
+                                    {item.Value || 'N/A'} 
                                 </td>
-                                <td style={{ border: '1px solid black', padding: '0.5rem' }}>
+                                {/* <td style={{ border: '1px solid black', padding: '0.5rem' }}>
                                     {item.acresValue || 'N/A'} {/* Assuming 'Value' is the yield data */}
-                                </td>
+                                {/* </td> */}
+                            
                             </tr>
                         ))}
                     </tbody>

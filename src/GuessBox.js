@@ -5,16 +5,25 @@ import {submitCornGuess} from './Slices/CornSlice'
 import {useDispatch} from 'react-redux'
 import { fetchCornEstimate } from './Slices/CornGuessSlice'
 import {useNavigate} from 'react-router-dom'
+import { useUser } from "./UserContext";
+import { Link } from "react-router-dom";
 
 const GuessBox = (props) => {
+  const navigate = useNavigate()
+  const { user, loggedIn, login } = useUser(); 
+
     const dispatch = useDispatch()
     const yiel = props.yield
-    const name = props.logged.name
-    const state = props.logged.state
-    const interest = props.logged.interest
-    const userId = props.logged.userId
-    const grain = props.grain
-    const navigate = useNavigate()
+    let name, state, interest, userId, grain = props.grain;
+
+    if (user) {
+      name = user?.firstName + " " + user?.lastName;
+      state = user?.state
+      interest = user.interest
+      userId = user.userId
+      grain = props.grain
+
+} 
 
     let content = props.yield ?
     (  <p>Guesstimate: {props.yield} </p>) :
@@ -33,7 +42,7 @@ const GuessBox = (props) => {
        
       dispatch(submitCornGuess({grain,yiel, name, state, interest, userId, date: formattedDate})) 
         dispatch(fetchCornEstimate()) 
-        navigate('/History')
+        navigate(0)
        
     }
     
@@ -46,10 +55,20 @@ const GuessBox = (props) => {
     </div>
     <div>
 
-<Button 
-// disabled={!props.yield || !name} 
-onClick={onSubmit}>{(!props.yield) ? "Calculate your Estimate" :
-(state) ? "Please Log In" : "Submit My Estimate"}</Button>
+<div>
+{(!loggedIn) ?
+ (
+  <Link to="/Signin">
+    <Button>Please Log In</Button>
+  </Link>
+) :
+  (<Button onClick={onSubmit}>Submit My Estimate
+
+  </Button>)}
+  <Link to='/History'>
+  <Button style = {{marginLeft:'25px'}}>My History</Button>
+  </Link>
+  </div>    
 </div>
 </GuessView>
     </>

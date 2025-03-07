@@ -5,9 +5,8 @@ import React from 'react'
 
 const PostAuthor = ({userId}) => {
 const users = useSelector(selectAllUsers)
-
+console.log(users)
  const author = users.find(user => user.userId == userId.toString())
-// const author = users.find(user => user.userId == userId)
 
 
 return <span><div> by {author ? author.firstName + " " + author.lastName + "    -->  " : 'Unknown author   '} </div>

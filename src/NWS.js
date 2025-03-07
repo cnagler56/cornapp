@@ -24,8 +24,20 @@ const NWS = () => {
     }, [locations]);
 
     return (
-<div>
-    <h1>Weather Forecast</h1>
+<div className="centerbox">
+    <iframe
+      src="https://www.meteoblue.com/en/weather/widget/daily?geoloc=detect&days=7&tempunit=FAHRENHEIT&windunit=MILE_PER_HOUR&precipunit=INCH&coloured=coloured&pictoicon=1&maxtemperature=1&mintemperature=1&windspeed=0&windgust=0&winddirection=0&uv=0&humidity=0&precipitation=1&precipitationprobability=1&spot=0&pressure=0&layout=light"
+      frameBorder="0"
+      scrolling="no"
+      allowTransparency
+      sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
+       className = "weatherbo"
+      style={{
+        width: '600px',
+        height: '677px',
+        border: 'none'
+      }}
+    ></iframe>
     {weatherData.map((locationData, index) => (
         <div key={index}>
             <h2>Location {locationData.location}</h2>

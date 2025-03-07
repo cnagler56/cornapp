@@ -1,42 +1,38 @@
-import React from 'react'
-import {useSelector} from 'react-redux'
-// import {auth} from '../Slices/usersSlice'
-import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useUser } from "../UserContext";
 
 const capitalizeFirstLetter = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
-}
+};
 
-const Header = (props) => {
-  const tokenObject = JSON.parse(localStorage.getItem('user'));
+const Header = () => {
+  const { user, loggedIn } = useUser();
+  const [refresh, setRefresh] = useState(0); 
+
+  useEffect(() => {
+    setRefresh((prev) => prev + 1);
+  }, [loggedIn]); 
 
   let welcomeMessage;
-  //  if (users.firstName && users.lastName) {
-   if (tokenObject) {
-     const capitalizedFirstName = capitalizeFirstLetter(tokenObject.firstName);
-   
-     
-     const capitalizedLastName = capitalizeFirstLetter(tokenObject.lastName);
-   
+  if (user && user.firstName && user.lastName && loggedIn) {
+    const capitalizedFirstName = capitalizeFirstLetter(user.firstName);
+    const capitalizedLastName = capitalizeFirstLetter(user.lastName);
     welcomeMessage = `Welcome ${capitalizedFirstName} ${capitalizedLastName}`;
   } else {
-     welcomeMessage = <Link to= "/Signin" style={{color: 'white'}}>Log In You Coward</Link> ;
-    
+    welcomeMessage = (
+      <Link to="/Signin" style={{ color: "white" }}>
+        Log In You Coward
+      </Link>
+    );
   }
 
   return (
     <header className="Header">
-      <h1 style={{background:"transparent"}}>
-        {props.title}
-        </h1>
-        <div className='welcome'>
-          {welcomeMessage}
-          </div>
-         
+      <h1 style={{ background: "transparent" }}>JustForAg</h1>
+      <div className="welcome">{welcomeMessage}</div>
+    </header>
+  );
+};
 
-   
-        </header>
-  )
-}
-
-export default Header
+export default Header;

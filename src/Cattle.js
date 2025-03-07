@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 const Cattle = () => {
@@ -43,8 +43,7 @@ const Cattle = () => {
     return (
         <section style={{ textAlign: 'center', padding: '1rem' }}>
             <h2>Cattle</h2>
-
-            {/* Dropdowns */}
+          
             <div style={{ marginBottom: '1rem' }}>
 
                 <select value={month} onChange={(e) => setMonth(e.target.value)}>
@@ -80,7 +79,7 @@ const Cattle = () => {
                     <thead>
                         <tr>
                             <th style={{ border: '1px solid black', padding: '0.5rem' }}>State</th>
-                            <th style={{ border: '1px solid black', padding: '0.5rem' }}>Yield</th>
+                            <th style={{ border: '1px solid black', padding: '0.5rem' }}>Pounds</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,11 +89,13 @@ const Cattle = () => {
                                     {item.location_desc || 'N/A'}
                                 </td>
                                 <td style={{ border: '1px solid black', padding: '0.5rem' }}>
-                                    {item.Value || 'N/A'} {/* Assuming 'Value' is the yield data */}
+                                    {item.Value || 'N/A'} 
                                 </td>
                             </tr>
                         ))}
                     </tbody>
+                   
+
                 </table>
             )}
         </section>

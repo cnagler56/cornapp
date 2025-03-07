@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTint, faSun, faCloud, faWind } from '@fortawesome/free-solid-svg-icons';
+import { faTint, faSun, faWind } from '@fortawesome/free-solid-svg-icons';
 import './Weather.css';
 
 const Weather = () => {
@@ -125,8 +125,11 @@ const Weather = () => {
                     })}
                 </div>
             )}
+            
         </div>
+        
     );
+    
 };
 
 export default Weather;

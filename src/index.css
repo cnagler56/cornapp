@@ -58,6 +58,9 @@ code {
   position: fixed;
   bottom:0
 }
+.Footer p {
+  margin-top:.7em;
+}
 
 .hom {
   display: flex;
@@ -86,17 +89,20 @@ code {
 .Nav {
   width: 100%;
   background-color: #333;
-  height: 30px;
+  height: 35px;
+  padding-bottom: 2px;
 }
 
 .Nav ul {
   color: #fff;
   width: 100%;
+  margin-bottom:5px;
   list-style-type: none;
   display: flex;
   justify-content:space-evenly;
   flex-wrap: nowrap;
   align-items: center;
+  gap: 20px;
 }
 
 .Nav li a {
@@ -108,7 +114,6 @@ code {
 .Nav li:focus, 
 .Nav li:hover a, 
 .Nav li:focus a  {
-  background-color: #dad2d2;
   color: #333;
 }
 
@@ -150,7 +155,22 @@ code {
 article:hover {
   background-color: #47463f;
 }
+.weatherbo {
+  margin-left:300px;
+  margin-top:150px;
 
+}
+
+.back {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+.centerbox {
+  width: 70%;
+  height: 70%;
+  margin: auto;
+}
 
 .contain {
   display: flex; 
@@ -307,18 +327,13 @@ section {
   place-items: center;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-
 ul {
-  padding: 0;
+  padding: 2px;
 }
 
 li {
   margin: 10px 0;
+  
 }
 h1 {
   text-align:center;

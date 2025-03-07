@@ -5,28 +5,28 @@ import {selectAllPosts} from '../Slices/postsSlice'
 import {selectAllUsers} from '../Slices/usersSlice'
 import {useNavigate} from 'react-router-dom'
 import { Form, Button } from "react-bootstrap";
+import { useUser } from "../UserContext";
 
 const AddPostForm = () => {
     const dispatch = useDispatch()
-    const logged = useSelector(state => state.loggedin)
     const [title, setTitle] = useState('Planting')
     const [content, setContent] = useState('')
     const [userId, setUserId] = useState('')
     const [addRequestStatus, setAddRequestStatus] = useState('idle')
     const navigate = useNavigate()
-    const users = useSelector(selectAllUsers)
 
+    const { user, loggedIn } = useUser();
     const onTitleChanged = e => setTitle(e.target.value)
     const onContentChanged = e => setContent(e.target.value)
     const onAuthorChanged = e => setUserId(e.target.value)
 
  
-    const canSave = [title, content].every(Boolean) && addRequestStatus === 'idle' && (logged.userId > 0)
+    const canSave = [title, content].every(Boolean) && addRequestStatus === 'idle' && (loggedIn)
   
 
     const onSavePostClicked = () => {
-        const name = logged.user.firstName + " " + logged.user.lastName
-        const city = logged.user.city
+        const name = user.firstName + " " + user.lastName
+        const city = user.city
         
         const currentDate = new Date()
         const year = currentDate.getFullYear();
@@ -39,12 +39,10 @@ const AddPostForm = () => {
   
          
         const formattedDate = `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`
-        const state = logged.user.state
-        const userId = logged.user.userId
-        console.log("1")
+        const state = user.state
+        const userId = user.userId
         if (true) {
             try {
-                console.log("2")
                 setAddRequestStatus('pending')
                 dispatch(addNewPost( {title, content, name, city, state, userId, date:formattedDate}))
 
@@ -95,16 +93,16 @@ const AddPostForm = () => {
                     className="postTitle"
                     value={content}
                     onChange={onContentChanged}
-                    disabled = {logged.user.name}
+                    disabled = {!loggedIn}
                 />
                 </Form.Group>
                 <Button
               
                     type="button"
                     onClick={onSavePostClicked}
-                    // disabled={!canSave} 
+                    disabled={!canSave} 
                     style={{marginTop:"5px", textAlign:"center", width:"100%"}}
-                >{(logged.user.name) ? "You Must Be Logged In" : "Save Post"}</Button>
+                >{(loggedIn) ? "You Must Be Logged In" : "Save Post"}</Button>
             </Form>
             </div>
         

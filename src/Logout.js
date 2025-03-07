@@ -1,34 +1,33 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Logout = () => {
+const Logout = ({ handleLogout }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const performLogout = async () => {
-      console.log("Logging out...");
-
+    const logOut = async () => {
       try {
-        const response = await fetch('/logout', {
-          method: 'POST',
-          credentials: 'include',  
+        const response = await fetch("/logout", {
+          method: "POST",
+          credentials: "include",
         });
 
         if (response.ok) {
-          localStorage.removeItem('user');  
-          navigate('/login');  
+          document.cookie = "JSESSIONID=; Max-Age=0; path=/";
+          navigate('/');
+          handleLogout();  
         } else {
-          console.error("Logout failed");
+          console.error("Logout failed:", response.statusText);
         }
       } catch (error) {
-        console.error("Error logging out", error);
+        console.error("Error during logout:", error);
       }
     };
 
-    performLogout();
-  }, [navigate]);
+    logOut();
+  }, [navigate, handleLogout]);
 
-  return <div>Logging out...</div>; // Ensures the component renders something
+  return <p>Logging out...</p>;
 };
 
 export default Logout;

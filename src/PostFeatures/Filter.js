@@ -19,7 +19,6 @@ export const Filter = () => {
     };
 
 const titleChoice = (state) => {
-   console.log(state)
     dispatch(fetchPosts(state))
 }
 
